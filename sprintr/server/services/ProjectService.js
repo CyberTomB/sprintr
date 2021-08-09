@@ -1,10 +1,8 @@
 import { dbContext } from '../db/DbContext.js'
 import { BadRequest, Forbidden } from '../utils/Errors'
 class ProjectService {
-  async edit(body) {
-    await this.getById(body.id)
-    const project = await dbContext.Project.findByIdAndUpdate(body.id, body, { new: true, runValidators: true })
-    return project
+  async getAll(query = {}) {
+    return await dbContext.Project.find(query)
   }
 
   async getById(id) {
@@ -12,6 +10,16 @@ class ProjectService {
     if (!project) {
       throw new BadRequest('invalid id')
     }
+  }
+
+  async edit(body) {
+    await this.getById(body.id)
+    const project = await dbContext.Project.findByIdAndUpdate(body.id, body, { new: true, runValidators: true })
+    return project
+  }
+
+  async create(body) {
+    return await dbContext.Project.create(body)
   }
 
   async destroy(id, userId) {
@@ -23,14 +31,6 @@ class ProjectService {
       throw new Forbidden('This is not your Project')
     }
     return await dbContext.Project.findByIdAndDelete(id)
-  }
-
-  async getAll(query = {}) {
-    return await dbContext.Project.find(query)
-  }
-
-  async create(body) {
-    return await dbContext.Project.create(body)
   }
 }
 
