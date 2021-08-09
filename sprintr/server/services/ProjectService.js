@@ -1,5 +1,5 @@
 import { dbContext } from '../db/DbContext.js'
-import { BadRequest } from '../utils/Errors'
+import { BadRequest, Forbidden } from '../utils/Errors'
 class ProjectService {
   async edit(body) {
     await this.getById(body.id)
@@ -14,8 +14,14 @@ class ProjectService {
     }
   }
 
-  async destroy(id) {
-    await this.getById(id)
+  async destroy(id, userId) {
+    const project = await dbContext.Project.findById(id)
+    if (!project) {
+      throw new BadRequest('Invalid ID')
+    }
+    if (project.creatorId.toString() !== userId) {
+      throw new Forbidden('This is not your Project')
+    }
     return await dbContext.Project.findByIdAndDelete(id)
   }
 
