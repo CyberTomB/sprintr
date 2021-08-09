@@ -1,6 +1,12 @@
 import { dbContext } from '../db/DbContext.js'
 import { BadRequest } from '../utils/Errors'
 class ProjectService {
+  async edit(body) {
+    await this.getById(body.id)
+    const project = await dbContext.Project.findByIdAndUpdate(body.id, body, { new: true, runValidators: true })
+    return project
+  }
+
   async getById(id) {
     const project = await dbContext.Project.findById(id)
     if (!project) {
