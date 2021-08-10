@@ -1,0 +1,46 @@
+
+PROJECT PAGE
+1.	Users can log in and out and remain logged in on refresh
+
+2.	From the Projects Page Users can create their own projects
+
+3.	When a Project is created, the user is pushed to the Project Page
+
+4.	From the Project Page Users can delete their own project
+
+5.	When a Project is deleted, the user is pushed back to the Projects Page
+
+6.	From the Project Page a user can create BacklogItems associated with the Project
+
+7.	From the Project Page a user can delete BacklogItems
+
+8.	Sprints can be created from the Project Page
+
+9.	Sprints can be deleted
+
+10.	Tasks can be assigned to a Sprint
+
+11.	Tasks can be moved between Sprints
+
+12.	Tasks can be created inside any BacklogItem on the Project page
+
+13.	Tasks can be deleted
+
+14.	Tasks have a status field and can be changed between pending, in-progress, review or done
+
+15.	Tasks have a weight, which is calculated on the sprint and the backlog
+
+16.	A user can add notes to a Task
+
+17.	A user can remove notes from a Task
+
+18.	Note creators name and image displayed on the note
+
+19.	Users can only modify/delete data they created
+
+20.	Only authenticated users can access the api
+
+21.	Application UI adheres to Phase I and Phase II of the CodeWorks Design Requirements
+
+
+TASKS
