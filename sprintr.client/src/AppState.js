@@ -4,5 +4,6 @@ import { reactive } from 'vue'
 export const AppState = reactive({
   user: {},
   account: {},
-  projects: [{ name: 'test' }]
+  projects: [{ name: 'test' }],
+  backlogItems: [{ name: 'backlog-test' }]
 })
