@@ -1,9 +1,9 @@
 import BaseController from '../utils/BaseController'
-import { backlogService } from '../services/BacklogService'
+import { backlogItemsService } from '../services/BacklogItemsService'
 import { Auth0Provider } from '@bcwdev/auth0provider'
-export class BacklogController extends BaseController {
+export class BacklogItemsController extends BaseController {
   constructor() {
-    super('backlog')
+    super('backlogItems')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
@@ -14,8 +14,8 @@ export class BacklogController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const backlog = await backlogService.getAll(req.query)
-      res.send(backlog)
+      const backlogItem = await backlogItemsService.getAll(req.query)
+      res.send(backlogItem)
     } catch (error) {
       next(error)
     }
@@ -24,8 +24,8 @@ export class BacklogController extends BaseController {
   async create(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const backlog = await backlogService.create(req.body)
-      res.send(backlog)
+      const backlogItem = await backlogItemsService.create(req.body)
+      res.send(backlogItem)
     } catch (error) {
       next(error)
     }
@@ -34,8 +34,8 @@ export class BacklogController extends BaseController {
   async edit(req, res, next) {
     try {
       req.body.id = req.params.id
-      const backlog = await backlogService.edit(req.body)
-      res.send(backlog)
+      const backlogItem = await backlogItemsService.edit(req.body)
+      res.send(backlogItem)
     } catch (error) {
       next(error)
     }
@@ -43,8 +43,8 @@ export class BacklogController extends BaseController {
 
   async destroy(req, res, next) {
     try {
-      const backlog = await backlogService.destroy(req.params.id, req.userInfo.id)
-      res.send({ message: `Project ${backlog.name} deleted` })
+      const backlogItem = await backlogItemsService.destroy(req.params.id, req.userInfo.id)
+      res.send({ message: `Project ${backlogItem.name} deleted` })
     } catch (error) {
       next(error)
     }

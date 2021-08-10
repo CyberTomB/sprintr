@@ -1,7 +1,7 @@
 import { dbContext } from '../db/DbContext.js'
 import { BadRequest, Forbidden } from '../utils/Errors'
 class ProjectService {
-  async getAll(query = {}) {
+  async getAll(query) {
     return await dbContext.Project.find(query)
   }
 

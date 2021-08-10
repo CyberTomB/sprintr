@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
-const Project = new Schema(
+const BacklogItem = new Schema(
   {
     name: { type: String, required: true },
     body: { type: String, required: true },
@@ -13,4 +13,4 @@ const Project = new Schema(
   { timestamps: true, toJSON: { virtuals: true } }
 )
 
-export default Project
+export default BacklogItem

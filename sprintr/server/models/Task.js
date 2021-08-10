@@ -5,11 +5,12 @@ const ObjectId = Schema.Types.ObjectId
 
 const Task = new Schema(
   {
+    name: { type: String, required: true },
     status: { type: String, enums: ['pending', 'in-progress', 'review', 'done'], default: 'pending', required: true },
     weight: { type: Number, required: true },
-    projectId: { type: ObjectId, required: true },
-    sprintId: { type: ObjectId, required: true },
-    backlogItemId: { type: ObjectId, ref: 'Backlog', required: true },
+    projectId: { type: ObjectId, ref: 'Project', required: true },
+    // sprintId: { type: ObjectId, ref: 'Sprint'},
+    backlogItemId: { type: ObjectId, ref: 'BacklogItem', required: true },
     creatorId: { type: ObjectId, ref: 'Account', required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }
