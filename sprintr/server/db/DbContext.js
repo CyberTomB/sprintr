@@ -5,6 +5,7 @@ import ProjectSchema from '../models/Project'
 import BacklogItemSchema from '../models/BacklogItem'
 import TaskSchema from '../models/Task'
 import SprintSchema from '../models/Sprint'
+import NoteSchema from '../models/Note'
 
 class DbContext {
   Values = mongoose.model('Value', ValueSchema);
@@ -13,7 +14,8 @@ class DbContext {
   BacklogItem = mongoose.model('BacklogItem', BacklogItemSchema);
   Task = mongoose.model('Task', TaskSchema);
 
-  Sprint = mongoose.model('Sprint', SprintSchema)
+  Sprint = mongoose.model('Sprint', SprintSchema);
+  Note = mongoose.model('Note', NoteSchema)
 }
 
 export const dbContext = new DbContext()
