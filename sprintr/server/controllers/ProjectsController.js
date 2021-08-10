@@ -1,9 +1,9 @@
 import BaseController from '../utils/BaseController'
-import { backlogItemsService } from '../services/BacklogItemsService'
+import { projectsService } from '../services/ProjectsService'
 import { Auth0Provider } from '@bcwdev/auth0provider'
-export class BacklogItemsController extends BaseController {
+export class ProjectsController extends BaseController {
   constructor() {
-    super('backlogItems')
+    super('projects')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
@@ -14,8 +14,8 @@ export class BacklogItemsController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const backlogItem = await backlogItemsService.getAll({ creatorId: req.userInfo.id })
-      res.send(backlogItem)
+      const project = await projectsService.getAll({ creatorId: req.userInfo.id })
+      res.send(project)
     } catch (error) {
       next(error)
     }
@@ -24,8 +24,8 @@ export class BacklogItemsController extends BaseController {
   async create(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const backlogItem = await backlogItemsService.create(req.body)
-      res.send(backlogItem)
+      const project = await projectsService.create(req.body)
+      res.send(project)
     } catch (error) {
       next(error)
     }
@@ -34,8 +34,8 @@ export class BacklogItemsController extends BaseController {
   async edit(req, res, next) {
     try {
       req.body.id = req.params.id
-      const backlogItem = await backlogItemsService.edit(req.body)
-      res.send(backlogItem)
+      const project = await projectsService.edit(req.body)
+      res.send(project)
     } catch (error) {
       next(error)
     }
@@ -43,8 +43,8 @@ export class BacklogItemsController extends BaseController {
 
   async destroy(req, res, next) {
     try {
-      const backlogItem = await backlogItemsService.destroy(req.params.id, req.userInfo.id)
-      res.send({ message: `Project ${backlogItem.name} deleted` })
+      const project = await projectsService.destroy(req.params.id, req.userInfo.id)
+      res.send({ message: `Project ${project.name} deleted` })
     } catch (error) {
       next(error)
     }

@@ -1,6 +1,6 @@
 import { dbContext } from '../db/DbContext.js'
 import { BadRequest, Forbidden } from '../utils/Errors'
-class ProjectService {
+class ProjectsService {
   async getAll(query) {
     return await dbContext.Project.find(query)
   }
@@ -34,4 +34,4 @@ class ProjectService {
   }
 }
 
-export const projectService = new ProjectService()
+export const projectsService = new ProjectsService()
