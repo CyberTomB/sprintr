@@ -5,7 +5,7 @@ class TasksService {
     return await dbContext.Task.find(query)
       .populate('projectId')
       .populate('sprintId')
-      .populate('backlogId')
+      .populate('backlogItemId')
   }
 
   async getById(id) {
