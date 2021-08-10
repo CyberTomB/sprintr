@@ -2,7 +2,7 @@ import { dbContext } from '../db/DbContext.js'
 import { BadRequest, Forbidden } from '../utils/Errors'
 class BacklogItemsService {
   async getAll(query = {}) {
-    return await dbContext.BacklogItem.find(query)
+    return await dbContext.BacklogItem.find(query).populate('projectId')
   }
 
   async getById(id) {

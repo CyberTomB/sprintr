@@ -3,6 +3,7 @@ import { BadRequest, Forbidden } from '../utils/Errors'
 class SprintsService {
   async getAll(query) {
     return await dbContext.Sprint.find(query)
+      .populate('projectId')
   }
 
   async getById(id) {

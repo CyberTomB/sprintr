@@ -3,6 +3,9 @@ import { BadRequest, Forbidden } from '../utils/Errors'
 class TasksService {
   async getAll(query = {}) {
     return await dbContext.Task.find(query)
+      .populate('projectId')
+      .populate('sprintId')
+      .populate('backlogId')
   }
 
   async getById(id) {
