@@ -1,6 +1,6 @@
 import { dbContext } from '../db/DbContext.js'
 import { BadRequest, Forbidden } from '../utils/Errors'
-class TaskService {
+class TasksService {
   async getAll(query = {}) {
     return await dbContext.Task.find(query)
   }
@@ -34,4 +34,4 @@ class TaskService {
   }
 }
 
-export const taskService = new TaskService()
+export const tasksService = new TasksService()

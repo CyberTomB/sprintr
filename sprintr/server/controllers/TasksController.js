@@ -1,9 +1,9 @@
-import BaseController from '..//utils/BaseController'
-import { taskService } from '../services/TaskService'
+import BaseController from '../utils/BaseController'
+import { tasksService } from '../services/TasksService'
 import { Auth0Provider } from '@bcwdev/auth0provider'
-export class ProjectController extends BaseController {
+export class TasksController extends BaseController {
   constructor() {
-    super('task')
+    super('tasks')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
@@ -14,7 +14,7 @@ export class ProjectController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const task = await taskService.getAll(req.query)
+      const task = await tasksService.getAll(req.query)
       res.send(task)
     } catch (error) {
       next(error)
@@ -24,7 +24,7 @@ export class ProjectController extends BaseController {
   async create(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const task = await taskService.create(req.body)
+      const task = await tasksService.create(req.body)
       res.send(task)
     } catch (error) {
       next(error)
@@ -34,7 +34,7 @@ export class ProjectController extends BaseController {
   async edit(req, res, next) {
     try {
       req.body.id = req.params.id
-      const task = await taskService.edit(req.body)
+      const task = await tasksService.edit(req.body)
       res.send(task)
     } catch (error) {
       next(error)
@@ -43,8 +43,8 @@ export class ProjectController extends BaseController {
 
   async destroy(req, res, next) {
     try {
-      const task = await taskService.destroy(req.params.id, req.userInfo.id)
-      res.send({ message: `Project ${task.name} deleted` })
+      const task = await tasksService.destroy(req.params.id, req.userInfo.id)
+      res.send({ message: `Task ${task.name} deleted` })
     } catch (error) {
       next(error)
     }
