@@ -1,9 +1,9 @@
-import BaseController from '..//utils/BaseController'
-import { projectService } from '../services/ProjectService'
+import BaseController from '../utils/BaseController'
+import { sprintsService } from '../services/SprintsService'
 import { Auth0Provider } from '@bcwdev/auth0provider'
-export class ProjectController extends BaseController {
+export class SprintsController extends BaseController {
   constructor() {
-    super('project')
+    super('sprints')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
@@ -14,8 +14,8 @@ export class ProjectController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const project = await projectService.getAll({ creatorId: req.userInfo.id })
-      res.send(project)
+      const sprint = await sprintsService.getAll({ creatorId: req.userInfo.id })
+      res.send(sprint)
     } catch (error) {
       next(error)
     }
@@ -24,8 +24,8 @@ export class ProjectController extends BaseController {
   async create(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const project = await projectService.create(req.body)
-      res.send(project)
+      const sprint = await sprintsService.create(req.body)
+      res.send(sprint)
     } catch (error) {
       next(error)
     }
@@ -34,8 +34,8 @@ export class ProjectController extends BaseController {
   async edit(req, res, next) {
     try {
       req.body.id = req.params.id
-      const project = await projectService.edit(req.body)
-      res.send(project)
+      const sprint = await sprintsService.edit(req.body)
+      res.send(sprint)
     } catch (error) {
       next(error)
     }
@@ -43,8 +43,8 @@ export class ProjectController extends BaseController {
 
   async destroy(req, res, next) {
     try {
-      const project = await projectService.destroy(req.params.id, req.userInfo.id)
-      res.send({ message: `Project ${project.name} deleted` })
+      const sprint = await sprintsService.destroy(req.params.id, req.userInfo.id)
+      res.send({ message: `Project ${sprint.name} deleted` })
     } catch (error) {
       next(error)
     }
