@@ -9,7 +9,7 @@ import SprintSchema from '../models/Sprint'
 class DbContext {
   Values = mongoose.model('Value', ValueSchema);
   Account = mongoose.model('Account', AccountSchema);
-  Project = mongoose.model('Projects', ProjectSchema);
+  Project = mongoose.model('Project', ProjectSchema);
   BacklogItem = mongoose.model('BacklogItem', BacklogItemSchema);
   Task = mongoose.model('Task', TaskSchema);
 

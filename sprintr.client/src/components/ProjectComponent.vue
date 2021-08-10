@@ -1,5 +1,7 @@
 <template>
-  <h1>{{ projects[0].name }}</h1>
+  <h1 v-for="p in projects" :key="p.id">
+    {{ p.name }}
+  </h1>
 </template>
 
 <script>
@@ -14,15 +16,19 @@ export default {
     const route = useRoute()
     onMounted(async() => {
       try {
-        if (route.name === 'Home') { await projectsService.getAll() }
+        if (route.name === 'Account') { await projectsService.getAll() }
       } catch (error) {
         Pop.toast(error)
       }
     })
     return {
       account: computed(() => AppState.account),
-      projects: computed(() => AppState.projects)
+      projects: computed(() => AppState.projects),
+      async getAll() {
+        await projectsService.getAll()
+      }
     }
   }
 }
+
 </script>
