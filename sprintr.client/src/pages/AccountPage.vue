@@ -1,7 +1,6 @@
 <template>
   <div class="about text-center">
     <h1>Welcome {{ account.name }}</h1>
-    <ProjectListComponent />
   </div>
 </template>
 

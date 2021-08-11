@@ -1,5 +1,5 @@
 <template>
-  <router-link v-for="p in projects" :key="p.id" :to="{name: 'Project', params: {project_id: p.id}}">
+  <router-link v-for="p in projects" :key="p.id" :to="{name: 'ChosenProject', params: {project_id: p.id}}">
     <h1>
       {{ p.name }}
     </h1>
@@ -18,7 +18,7 @@ export default {
     const route = useRoute()
     onMounted(async() => {
       try {
-        if (route.name === 'Account') { await projectsService.getAll() }
+        await projectsService.getAll()
       } catch (error) {
         Pop.toast(error)
       }

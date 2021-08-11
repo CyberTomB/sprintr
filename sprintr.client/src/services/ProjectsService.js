@@ -12,7 +12,7 @@ class ProjectsService {
     console.log('projects/' + id)
     const res = await api.get('/projects/' + id)
     console.log('getbyID', res)
-    AppState.projects = res.data
+    AppState.chosenProject = res.data
   }
 }
 

@@ -20,7 +20,7 @@ export default {
       }
     })
     return {
-      project: computed(() => AppState.projects)
+      project: computed(() => AppState.chosenProject)
     }
   }
 }
