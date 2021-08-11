@@ -1,22 +1,45 @@
 import { AppState } from '../AppState'
+import Pop from '../utils/Notifier'
 import { api } from './AxiosService'
 
 class ProjectsService {
   async getAll() {
-    const res = await api.get('api/projects')
-    console.log('getAll', res.data)
-    AppState.projects = res.data
+    try {
+      const res = await api.get('api/projects')
+      AppState.projects = res.data
+    } catch (error) {
+      Pop.toast(error)
+    }
   }
 
   async getProjectById(id) {
-    console.log('api/projects/' + id)
-    const res = await api.get('api/projects/' + id)
-    console.log('getbyID', res)
-    AppState.chosenProject = res.data
+    try {
+      const res = await api.get('api/projects/' + id)
+      AppState.chosenProject = res.data
+    } catch (error) {
+      Pop.toast(error)
+    }
   }
 
-  async create(rawProject) {
-    const res = await api.create('api/projects')
+  async create(newProject) {
+    try {
+      const res = await api.post('api/projects', newProject)
+      AppState.projects.push(res.data)
+    } catch (error) {
+      Pop.toast(error)
+    }
+  }
+
+  async delete(id) {
+    if (await Pop.confirm()) {
+      try {
+        const res = await api.delete('api/projects/' + id)
+        Pop.toast(res.data.message)
+        AppState.projects = AppState.projects.filter(p => p.id !== id)
+      } catch (error) {
+        Pop.toast(error)
+      }
+    }
   }
 }
 

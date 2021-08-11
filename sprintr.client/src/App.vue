@@ -34,4 +34,8 @@ export default {
   color: #d9d9dd;
 }
 
+.action {
+  cursor: pointer;
+}
+
 </style>
