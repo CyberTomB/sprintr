@@ -14,6 +14,10 @@ class ProjectsService {
     console.log('getbyID', res)
     AppState.chosenProject = res.data
   }
+
+  async create(rawProject) {
+    const res = await api.create('api/projects')
+  }
 }
 
 export const projectsService = new ProjectsService()

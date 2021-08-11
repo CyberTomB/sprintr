@@ -1,9 +1,11 @@
 <template>
-  <router-link v-for="p in projects" :key="p.id" :to="{name: 'ChosenProject', params: {project_id: p.id}}">
-    <h1>
-      {{ p.name }}
-    </h1>
-  </router-link>
+  <div class="col">
+    <router-link v-for="p in projects" :key="p.id" :to="{name: 'ChosenProject', params: {project_id: p.id}}">
+      <h1>
+        {{ p.name }}
+      </h1>
+    </router-link>
+  </div>
 </template>
 
 <script>
