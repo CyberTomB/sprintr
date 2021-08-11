@@ -21,10 +21,10 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto nav-tabs">
         <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
+          <router-link :to="{ name: 'ProjectList' }" class="nav-link">
+            Projects
           </router-link>
         </li>
         <li class="nav-item">
@@ -82,8 +82,10 @@
 import { AuthService } from '../services/AuthService'
 import { AppState } from '../AppState'
 import { computed, reactive } from 'vue'
+import { useRouter } from 'vue-router'
 export default {
   setup() {
+    const router = useRouter()
     const state = reactive({
       dropOpen: false
     })
@@ -91,7 +93,8 @@ export default {
       state,
       user: computed(() => AppState.user),
       async login() {
-        AuthService.loginWithPopup()
+        await AuthService.loginWithPopup()
+        router.push({ name: 'ProjectList' })
       },
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })

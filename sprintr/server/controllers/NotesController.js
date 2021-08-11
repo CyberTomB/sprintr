@@ -3,7 +3,7 @@ import { notesService } from '../services/NotesService'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 export class NotesController extends BaseController {
   constructor() {
-    super('notes')
+    super('api/notes')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)

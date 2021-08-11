@@ -3,7 +3,7 @@ import { sprintsService } from '../services/SprintsService'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 export class SprintsController extends BaseController {
   constructor() {
-    super('sprints')
+    super('api/sprints')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)

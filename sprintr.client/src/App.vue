@@ -3,7 +3,9 @@
     <Navbar />
   </header>
   <main>
-    <router-view />
+    <div class="container">
+      <router-view />
+    </div>
   </main>
   <footer>
     <div class="nav-style text-center p-4">
@@ -30,6 +32,10 @@ export default {
 .nav-style{
   background-color:#000d2a ;
   color: #d9d9dd;
+}
+
+.action {
+  cursor: pointer;
 }
 
 </style>
