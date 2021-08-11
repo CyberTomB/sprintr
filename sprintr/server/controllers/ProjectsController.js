@@ -9,7 +9,7 @@ export class ProjectsController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id/backlogitems', this.getAllBacklogItems)
-      .get('/:id/', this.getAllBacklogItems)
+      .get('/:id', this.getOne)
       .post('', this.create)
       .delete('/:id', this.destroy)
       .put('/:id', this.edit)
@@ -18,6 +18,15 @@ export class ProjectsController extends BaseController {
   async getAll(req, res, next) {
     try {
       const project = await projectsService.getAll({ creatorId: req.userInfo.id })
+      res.send(project)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getOne(req, res, next) {
+    try {
+      const project = await projectsService.getById(req.params.id)
       res.send(project)
     } catch (error) {
       next(error)

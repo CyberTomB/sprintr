@@ -6,10 +6,9 @@ class ProjectsService {
   }
 
   async getById(id) {
+    console.log('server service:', id)
     const project = await dbContext.Project.findById(id)
-    if (!project) {
-      throw new BadRequest('invalid id')
-    }
+    return project
   }
 
   async edit(body) {

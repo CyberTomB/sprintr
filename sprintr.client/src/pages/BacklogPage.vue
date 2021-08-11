@@ -8,11 +8,13 @@
 import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import backlogsService from '../services/BacklogsService'
+import { useRoute } from 'vue-router'
 export default {
   name: 'Backlog',
   setup() {
+    const route = useRoute()
     onMounted(async() => {
-      await backlogsService.getByProjectId(id)
+      await backlogsService.getByProjectId(route.params.id)
     })
     return {
       backlogItems: computed(() => AppState.backlogItems)

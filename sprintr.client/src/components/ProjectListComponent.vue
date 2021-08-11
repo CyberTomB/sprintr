@@ -1,7 +1,9 @@
 <template>
-  <h1 v-for="p in projects" :key="p.id">
-    {{ p.name }}
-  </h1>
+  <router-link v-for="p in projects" :key="p.id" :to="{name: 'Project', params: {project_id: p.id}}">
+    <h1>
+      {{ p.name }}
+    </h1>
+  </router-link>
 </template>
 
 <script>
