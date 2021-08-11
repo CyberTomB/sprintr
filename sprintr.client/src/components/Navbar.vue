@@ -1,11 +1,11 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg nav-style">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
+          src="https://i.pinimg.com/originals/c1/3c/c8/c13cc8b2e0c21cf637ec362e1d45718d.jpg"
+          height="75"
         />
       </div>
     </router-link>
@@ -102,6 +102,14 @@ export default {
 </script>
 
 <style scoped>
+.nav-style{
+  background-color:#000d2a ;
+  color: #d9d9dd;
+  border: 1px;
+  border-color: #d9d9dd;
+  border-style: solid;
+}
+
 .dropdown-menu {
   user-select: none;
   display: block;
@@ -121,6 +129,6 @@ a:hover {
   text-transform: uppercase;
 }
 .nav-item .nav-link.router-link-exact-active{
-  color: var(--primary);
+  color: var(--light);
 }
 </style>
