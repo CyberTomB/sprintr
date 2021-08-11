@@ -5,21 +5,22 @@
       <div class="card-body">
         <img src="../assets/img/nav-logo.png" height="600vh" width="600vw" alt="'no image found'">
         <br />
-        <button class="card-title">
-          Code Runnr
-        </button>
         <p class="card-text">
           This is not a drill
         </p>
       </div>
     </div>
   </div>
-  <router-view></router-view>
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core'
+import { AppState } from '../AppState'
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    return { user: computed(() => AppState.user) }
+  }
 }
 </script>
 
