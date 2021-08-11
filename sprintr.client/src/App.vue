@@ -6,8 +6,8 @@
     <router-view />
   </main>
   <footer>
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
+    <div class="nav-style text-center p-4">
+      Made with 🔋 by Tom and Sam
     </div>
   </footer>
 </template>
@@ -26,5 +26,10 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
+.nav-style{
+  background-color:#000d2a ;
+  color: #d9d9dd;
+}
 
 </style>
