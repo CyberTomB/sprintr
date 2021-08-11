@@ -3,7 +3,9 @@
   <router-link :to="{name: 'Backlog'}">
     BACKLOG
   </router-link>
-  <router-view />
+  <div class="row">
+    <router-view />
+  </div>
 </template>
 
 <script>

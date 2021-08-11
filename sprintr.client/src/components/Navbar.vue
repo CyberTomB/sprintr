@@ -21,7 +21,7 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto nav-tabs">
         <li class="nav-item">
           <router-link :to="{ name: 'ProjectList' }" class="nav-link">
             Projects
