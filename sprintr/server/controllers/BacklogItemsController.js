@@ -3,7 +3,7 @@ import { backlogItemsService } from '../services/BacklogItemsService'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 export class BacklogItemsController extends BaseController {
   constructor() {
-    super('backlogItems')
+    super('api/backlog')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)

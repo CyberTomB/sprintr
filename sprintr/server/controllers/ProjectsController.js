@@ -4,11 +4,11 @@ import { Auth0Provider } from '@bcwdev/auth0provider'
 import { backlogItemsService } from '../services/BacklogItemsService'
 export class ProjectsController extends BaseController {
   constructor() {
-    super('projects')
+    super('api/projects')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
-      .get('/:id/backlogitems', this.getAllBacklogItems)
+      .get('/:id/backlog', this.getAllBacklogItems)
       .get('/:id', this.getOne)
       .post('', this.create)
       .delete('/:id', this.destroy)

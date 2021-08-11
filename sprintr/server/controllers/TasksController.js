@@ -3,7 +3,7 @@ import { tasksService } from '../services/TasksService'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 export class TasksController extends BaseController {
   constructor() {
-    super('tasks')
+    super('api/tasks')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)

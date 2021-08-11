@@ -1,9 +1,11 @@
-const { api } = require('./AxiosService')
+import { AppState } from '../AppState'
+import { api } from './AxiosService'
 
 class BacklogsService {
-  async getByProjectId(id) {
-    const res = await api.get('projects/' + id + '/backlogitems')
+  async getBacklogItemsByProjectId(id) {
+    const res = await api.get('api/projects/' + id + '/backlog')
     console.log(res.data)
+    AppState.backlogItems = res.data
   }
 }
 

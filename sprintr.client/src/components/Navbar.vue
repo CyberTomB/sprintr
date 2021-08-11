@@ -23,8 +23,8 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
+          <router-link :to="{ name: 'ProjectList' }" class="nav-link">
+            Projects
           </router-link>
         </li>
         <li class="nav-item">
