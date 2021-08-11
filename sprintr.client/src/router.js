@@ -30,8 +30,8 @@ const routes = [
   },
   {
     path: '/projects/:project_id',
-    name: 'ChosenProject',
-    component: loadPage('ChosenProjectPage'),
+    name: 'ProjectDetails',
+    component: loadPage('ProjectDetailsPage'),
     children: [{
       path: 'backlog',
       name: 'Backlog',

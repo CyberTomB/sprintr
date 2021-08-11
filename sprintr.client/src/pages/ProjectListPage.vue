@@ -26,11 +26,14 @@
 </template>
 
 <script>
+import { useRoute, useRouter } from 'vue-router'
 import { projectsService } from '../services/ProjectsService'
 // TODO: Create "Add New Project" button
 
 export default {
   setup() {
+    const router = useRouter()
+    const route = useRoute()
     const state = {
       newProject: {
         name: '',
@@ -41,7 +44,8 @@ export default {
       state,
       async createProject() {
         console.log('ACK')
-        await projectsService.create(state.newProject)
+        const id = await projectsService.create(state.newProject)
+        router.push({ name: 'ProjectDetails', params: { project_id: id } })
       }
     }
   }

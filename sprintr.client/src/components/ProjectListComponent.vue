@@ -1,7 +1,7 @@
 <template>
   <div class="col">
     <div v-for="p in projects" :key="p.id">
-      <router-link :to="{name: 'ChosenProject', params: {project_id: p.id}}">
+      <router-link :to="{name: 'ProjectDetails', params: {project_id: p.id}}">
         <div>
           <h1>
             {{ p.name }}

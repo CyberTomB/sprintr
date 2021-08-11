@@ -25,6 +25,7 @@ class ProjectsService {
     try {
       const res = await api.post('api/projects', newProject)
       AppState.projects.push(res.data)
+      return res.data.id
     } catch (error) {
       Pop.toast(error)
     }
