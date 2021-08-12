@@ -6,7 +6,7 @@
     </h1>
   </div>
   <div class="col-7">
-    <div class="card-columns d-flex">
+    <div class="card-columns d-flex" v-if="tasks">
       <TaskCard v-for="t in tasks" :key="t.id" :task="t" />
     </div>
   </div>
