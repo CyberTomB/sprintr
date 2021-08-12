@@ -74,7 +74,7 @@ export default {
     }
     onMounted(async() => {
       try {
-        await tasksService.getAllTasks(route.params.backlog_id)
+        await tasksService.getAllTasks('backlog', route.params.backlog_id)
       } catch (error) {
         Pop.toast(error)
       }

@@ -40,7 +40,7 @@ export default {
   setup() {
     onMounted(async() => {
       try {
-        await tasksService.getAllTasks(route.params.sprint_id)
+        await tasksService.getAllTasks('sprints', route.params.sprint_id)
       } catch (error) {
         Pop.toast(error)
       }
