@@ -3,7 +3,7 @@
     <Navbar />
   </header>
   <main>
-    <div class="container">
+    <div class="container-fluid">
       <router-view />
     </div>
   </main>

@@ -1,8 +1,32 @@
 <template>
-  <h1 @click="projectListPage" class="action">
-    {{ project.name }}
-  </h1>
-  <div class="row">
+  <div class="row bg-dark align-items-end justify-content-between">
+    <h1 @click="projectListPage" class="action m-3">
+      Project: {{ project.name }}
+    </h1>
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <router-link class="nav-link active"
+                     id="backlog-tab"
+                     data-toggle="tab"
+                     role="tab"
+                     :to="{name: 'Backlog', params:{project_id: project.id}}"
+        >
+          Backlog
+        </router-link>
+      </li>
+      <li class="nav-item" role="presentation">
+        <router-link class="nav-link"
+                     id="sprint-tab"
+                     data-toggle="tab"
+                     role="tab"
+                     :to="{name: 'SprintDetailsPage', params:{sprint_id: sprints[0].id}}"
+        >
+          Sprint
+        </router-link>
+      </li>
+    </ul>
+  </div>
+  <div class="row py-3 tab-content" id="router-view">
     <router-view></router-view>
   </div>
 </template>
@@ -22,13 +46,13 @@ export default {
       try {
         console.log(route.params.project_id)
         await projectsService.getProjectById(route.params.project_id)
-        // await backlogsService.getBacklogItemsByProjectId(route.params.project_id)
       } catch (error) {
         Pop.toast(error)
       }
     })
     return {
       project: computed(() => AppState.chosenProject),
+      sprints: computed(() => AppState.sprints),
       projectListPage() {
         router.push({ name: 'ProjectList' })
       }
