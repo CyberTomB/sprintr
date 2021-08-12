@@ -1,5 +1,7 @@
 <template>
-  <h1>{{ project.name }}</h1>
+  <h1 @click="projectListPage" class="action">
+    {{ project.name }}
+  </h1>
   <router-link :to="{name: 'Backlog'}">
     BACKLOG
   </router-link>
@@ -10,7 +12,7 @@
 
 <script>
 import { computed, onMounted } from '@vue/runtime-core'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import { projectsService } from '../services/ProjectsService'
 import Pop from '../utils/Notifier'
@@ -18,6 +20,7 @@ import { backlogsService } from '../services/BacklogsService'
 export default {
   setup() {
     const route = useRoute()
+    const router = useRouter()
     onMounted(async() => {
       try {
         console.log(route.params.project_id)
@@ -28,7 +31,10 @@ export default {
       }
     })
     return {
-      project: computed(() => AppState.chosenProject)
+      project: computed(() => AppState.chosenProject),
+      projectListPage() {
+        router.push({ name: 'ProjectList' })
+      }
     }
   }
 }
