@@ -12,9 +12,10 @@ class TasksService {
 
   async create(newTask) {
     try {
-      const res = await api.post('api/backlog', newTask)
+      const res = await api.post('api/tasks', newTask)
       AppState.tasks.push(res.data)
-      return res.data.id
+      Pop.toast('Task Created')
+      console.log(res.data)
     } catch (error) {
       Pop.toast(error)
     }

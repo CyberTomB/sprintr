@@ -22,7 +22,7 @@ PROJECT PAGE
 
 11.[]	Tasks can be moved between Sprints
 
-12.[]	Tasks can be created inside any BacklogItem on the Project page
+12.[x]	Tasks can be created inside any BacklogItem on the Project page
 
 13.[]	Tasks can be deleted
 

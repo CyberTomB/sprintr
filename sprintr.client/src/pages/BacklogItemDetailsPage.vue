@@ -58,7 +58,9 @@ export default {
       newTask: {
         name: '',
         weight: '',
-        status: ''
+        status: '',
+        projectId: route.params.project_id,
+        backlogItemId: route.params.backlog_id
       }
     }
     onMounted(async() => {
@@ -72,8 +74,12 @@ export default {
       state,
       async createTask() {
         console.log('TASKACK')
+        state.newTask.weight = Number(state.newTask.weight)
         const id = await tasksService.create(state.newTask)
-        router.push({ name: 'BacklogItemDetailsPage', params: { backlog_id: id } })
+        state.newTask = {
+          projectId: route.params.project_id,
+          backlogItemId: route.params.backlog_id
+        }
       }
     }
   }
