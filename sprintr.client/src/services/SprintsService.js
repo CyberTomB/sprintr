@@ -12,6 +12,17 @@ class SprintsService {
       Pop.toast(error)
     }
   }
+
+  async create(newSprint) {
+    try {
+      const res = await api.post('api/sprints', newSprint)
+      Pop.toast('Sprint Created')
+      AppState.sprints.push(res.data)
+      console.log('new sprint', res.data)
+    } catch (error) {
+      Pop.toast(error)
+    }
+  }
 }
 
 export const sprintsService = new SprintsService()

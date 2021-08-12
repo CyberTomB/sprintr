@@ -28,7 +28,9 @@
         </router-link>
       </li>
       <li class="nav-item" role="presentation">
-        <i class="mdi mdi-plus nav-link" id="add-tab" data-toggle="tab" role="tab"></i>
+        <router-link :to="{name: 'SprintFormPage'}">
+          <i class="mdi mdi-plus nav-link" id="add-tab" data-toggle="tab" role="tab" :class="{active: route.name == 'SprintFormPage'}"></i>
+        </router-link>
       </li>
     </ul>
   </div>
