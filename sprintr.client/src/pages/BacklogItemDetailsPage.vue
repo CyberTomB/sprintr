@@ -1,4 +1,10 @@
 <template>
+  <div class="col-12">
+    <h1 v-if="backlog" class="pb-3">
+      {{ backlog.name }}
+      <small v-if="backlogTaskWeight">Weight: {{ backlogTaskWeight }} Completed: {{ tasksDone.length }} / {{ tasks.length }}</small>
+    </h1>
+  </div>
   <div class="col-7">
     <div class="card-columns d-flex">
       <TaskCard v-for="t in tasks" :key="t.id" :task="t" />
@@ -84,7 +90,16 @@ export default {
           backlogItemId: route.params.backlog_id
         }
       },
-      tasks: computed(() => AppState.tasks)
+      backlog: computed(() => AppState.backlogItems.find(b => b.id === route.params.backlog_id)),
+      tasks: computed(() => AppState.tasks),
+      tasksDone: computed(() => AppState.tasks.filter(t => t.status === 'done')),
+      backlogTaskWeight: computed(() => {
+        let total = 0
+        AppState.tasks.forEach(t => {
+          total += t.weight
+        })
+        return total
+      })
     }
   }
 }

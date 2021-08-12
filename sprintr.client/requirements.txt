@@ -28,7 +28,7 @@ PROJECT PAGE
 
 14.[]	Tasks have a status field and can be changed between pending, in-progress, review or done
 
-15.[]	Tasks have a weight, which is calculated on the sprint and the backlog
+15.[x]	Tasks have a weight, which is calculated on the sprint and the backlog
 
 16.[]	A user can add notes to a Task
 
