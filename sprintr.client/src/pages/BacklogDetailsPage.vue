@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { onMounted } from '@vue/runtime-core'
 import Pop from '../utils/Notifier'
 import { tasksService } from '../services/TasksService'
@@ -53,6 +53,8 @@ import { tasksService } from '../services/TasksService'
 export default {
   setup() {
     const router = useRouter()
+    // Make sure the "useRoute" function is being imported, assign it to const "route" if you want to use it like this
+    const route = useRoute()
     const state = {
       newTask: {
         name: '',

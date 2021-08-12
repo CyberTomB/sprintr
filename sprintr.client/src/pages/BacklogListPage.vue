@@ -1,6 +1,7 @@
 <template>
   <div id="backlog-list" class="col-7">
     <div v-for="b in backlogItems" :key="b.id">
+      <!-- NOTE: This is where the props for the backlogitemcard are being defined (each one is a "b" which is a backlogItem object) -->
       <BacklogItemCard :backlog-item="b" />
       <i class="action mdi mdi-delete text-danger" @click="deleteProject(b.id)"></i>
     </div>

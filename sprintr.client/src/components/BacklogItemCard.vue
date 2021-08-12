@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  // NOTE: This is where the backlogitemcard knows to receive the prop "b" as an object from the BacklogListPage
   props: {
     backlogItem: {
       type: Object,
