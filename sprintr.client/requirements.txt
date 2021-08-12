@@ -16,7 +16,7 @@ PROJECT PAGE
 
 8.[x]	Sprints can be created from the Project Page
 
-9.[]	Sprints can be deleted
+9.[x]	Sprints can be deleted
 
 10.[]	Tasks can be assigned to a Sprint
 
@@ -36,7 +36,7 @@ PROJECT PAGE
 
 18.[]	Note creators name and image displayed on the note
 
-19.[]	Users can only modify/delete data they created
+19.[x?]	Users can only modify/delete data they created
 
 20.[x?]	Only authenticated users can access the api
 
