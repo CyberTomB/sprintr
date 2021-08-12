@@ -8,7 +8,7 @@ class NotesService {
   }
 
   async getById(id) {
-    const note = await dbContext.Note.findById(id)
+    const note = await dbContext.Note.findById(id).populate('creator')
     if (!note) {
       throw new BadRequest('invalid id')
     }
@@ -21,7 +21,8 @@ class NotesService {
   }
 
   async create(body) {
-    return await dbContext.Note.create(body)
+    const note = await dbContext.Note.create(body)
+    return await note.populate('creator').execPopulate()
   }
 
   async destroy(id, userId) {

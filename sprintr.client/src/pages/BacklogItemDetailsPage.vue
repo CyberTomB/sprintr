@@ -5,8 +5,8 @@
       <small v-if="backlogTaskWeight">Weight: {{ backlogTaskWeight }} Completed: {{ tasksDone.length }} / {{ tasks.length }}</small>
     </h1>
   </div>
-  <div class="col-7">
-    <div class="card-columns d-flex" v-if="tasks">
+  <div class="col-7" id="tasks-list">
+    <div class="card-columns" v-if="tasks">
       <TaskCard v-for="t in tasks" :key="t.id" :task="t" />
     </div>
   </div>
@@ -104,3 +104,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+#task-list{
+  max-height: 50vh;
+  overflow-y: auto;
+}
+</style>

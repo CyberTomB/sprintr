@@ -20,6 +20,7 @@
         </p>
         <p v-else @click="changeSelectorOn('sprint')">
           Sprint:  <span v-if="task.sprint">{{ task.sprint.name }}</span>
+          <span v-else><em>Assign Sprint</em></span>
         </p>
       </div>
       <div>
