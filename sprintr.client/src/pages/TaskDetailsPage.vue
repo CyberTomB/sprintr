@@ -1,7 +1,7 @@
 <template>
   <div class="col-6">
     <!-- Notes for the Task load here  -->
-    <NoteCard />
+    <NoteCard v-for="n in notes" :key="n.id" :note="n" />
   </div>
   <div class="col-6">
     <form @submit.prevent="createNote">
@@ -17,10 +17,11 @@
 </template>
 
 <script>
-import { onMounted, reactive } from '@vue/runtime-core'
+import { computed, onMounted, reactive } from '@vue/runtime-core'
 import { useRoute } from 'vue-router'
 import { notesService } from '../services/NotesService'
 import Pop from '../utils/Notifier'
+import { AppState } from '../AppState'
 export default {
   setup() {
     const route = useRoute()
@@ -39,6 +40,7 @@ export default {
     })
     return {
       state,
+      notes: computed(() => AppState.notes),
       async createNote() {
         await notesService.create(state.newNote)
         state.newNote = {
