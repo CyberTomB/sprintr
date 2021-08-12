@@ -13,7 +13,7 @@
         Sprint:
       </p>
       <p>Status: {{ task.status }}</p>
-      <!-- <i class="action mdi mdi-delete text-danger" @click="deleteTask(t.id)"></i> -->
+      <i class="action mdi mdi-delete text-danger" @click="deleteTask(task.id)"></i>
     </div>
   </div>
 
@@ -51,6 +51,9 @@ export default {
         } catch (error) {
           Pop.toast(error, 'error')
         }
+      },
+      async deleteTask(id) {
+        await tasksService.delete(id)
       }
 
     }
