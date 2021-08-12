@@ -23,6 +23,7 @@
           data-toggle="tab"
           role="tab"
           :to="{name: 'SprintDetailsPage', params:{sprint_id: sprint.id}}"
+          @click="getSprintTasks(sprint.id)"
         >
           {{ sprint.name }}
         </router-link>
@@ -46,6 +47,7 @@ import { AppState } from '../AppState'
 import { projectsService } from '../services/ProjectsService'
 import Pop from '../utils/Notifier'
 import { sprintsService } from '../services/SprintsService'
+import { tasksService } from '../services/TasksService'
 export default {
   setup() {
     const route = useRoute()
@@ -65,6 +67,9 @@ export default {
       sprints: computed(() => AppState.sprints),
       projectListPage() {
         router.push({ name: 'ProjectList' })
+      },
+      async getSprintTasks(id) {
+        await tasksService.getAllTasks('sprints', id)
       }
     }
   }

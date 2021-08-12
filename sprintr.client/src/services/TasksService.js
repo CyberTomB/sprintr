@@ -28,7 +28,6 @@ class TasksService {
   }
 
   async edit(task, newSprintId) {
-    debugger
     task.sprintId = newSprintId
     const res = await api.put('api/tasks/' + task.id, task)
   }

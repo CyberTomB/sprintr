@@ -18,13 +18,13 @@ PROJECT PAGE
 
 9.[x]	Sprints can be deleted
 
-10.[]	Tasks can be assigned to a Sprint
+10.[x]	Tasks can be assigned to a Sprint
 
-11.[]	Tasks can be moved between Sprints
+11.[x]	Tasks can be moved between Sprints
 
 12.[x]	Tasks can be created inside any BacklogItem on the Project page
 
-13.[]	Tasks can be deleted
+13.[x]	Tasks can be deleted
 
 14.[]	Tasks have a status field and can be changed between pending, in-progress, review or done
 
