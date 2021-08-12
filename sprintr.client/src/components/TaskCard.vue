@@ -19,7 +19,7 @@
           </select>
         </p>
         <p v-else @click="changeSelectorOn('sprint')">
-          Sprint: {{ task.sprint.name }}
+          <span v-if="task.sprint">Sprint: {{ task.sprint.name }}</span>
         </p>
       </div>
       <div>
