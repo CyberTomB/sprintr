@@ -33,7 +33,7 @@ const routes = [
     name: 'ProjectDetails',
     component: loadPage('ProjectDetailsPage'),
     children: [{
-      path: 'backlog',
+      path: '',
       name: 'Backlog',
       component: loadPage('BacklogListPage')
     },

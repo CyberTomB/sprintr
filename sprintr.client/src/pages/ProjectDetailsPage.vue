@@ -2,11 +2,8 @@
   <h1 @click="projectListPage" class="action">
     {{ project.name }}
   </h1>
-  <router-link :to="{name: 'Backlog'}">
-    BACKLOG
-  </router-link>
   <div class="row">
-    <router-view />
+    <router-view></router-view>
   </div>
 </template>
 
@@ -25,7 +22,7 @@ export default {
       try {
         console.log(route.params.project_id)
         await projectsService.getProjectById(route.params.project_id)
-        await backlogsService.getBacklogItemsByProjectId(route.params.project_id)
+        // await backlogsService.getBacklogItemsByProjectId(route.params.project_id)
       } catch (error) {
         Pop.toast(error)
       }
