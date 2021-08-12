@@ -4,6 +4,7 @@ class NotesService {
   async getAll(query) {
     return await dbContext.Note.find(query)
       .populate('taskId')
+      .populate('creator')
   }
 
   async getById(id) {
