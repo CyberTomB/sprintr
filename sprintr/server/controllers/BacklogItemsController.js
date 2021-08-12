@@ -8,7 +8,7 @@ export class BacklogItemsController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
-      .get('/:id/tasks', this.getAllByBacklogId)
+      .get('/:id', this.getAllByBacklogId)
       .post('', this.create)
       .delete('/:id', this.destroy)
       .put('/:id', this.edit)

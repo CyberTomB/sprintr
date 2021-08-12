@@ -1,16 +1,19 @@
 <template>
   <div v-if="sprint" class="col-12">
-    <div class="row">
-      <h1>
+    <div class="row justify-content-between align-items-end py-3">
+      <h1 class="col-8">
         {{ sprint.name }}:
         <small>Tasks: {{ tasksDone.length }} / {{ tasks.length }} | Weight: {{ sprintTaskWeight }}</small>
       </h1>
-    </div>
-    <div class="row">
-      <div>
+      <div class="col-2">
         <button class="btn btn-danger" @click="deleteSprint">
-          DELETE
+          DELETE SPRINT
         </button>
+      </div>
+    </div>
+    <div class="row py-3 mx-2">
+      <div class="card-columns">
+        <TaskCard v-for="t in tasks" :key="t.id" :task="t" />
       </div>
     </div>
   </div>
@@ -40,7 +43,7 @@ export default {
   setup() {
     onMounted(async() => {
       try {
-        await tasksService.getAllTasks(route.params.sprint_id)
+        await tasksService.getAllTasks('sprints', route.params.sprint_id)
       } catch (error) {
         Pop.toast(error)
       }

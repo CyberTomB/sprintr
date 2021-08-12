@@ -4,8 +4,8 @@ import Pop from '../utils/Notifier'
 
 class TasksService {
   // REVIEW: How do I make this RESTful?
-  async getAllTasks(backlogId) {
-    const res = await api.get('api/backlog/' + backlogId + '/tasks')
+  async getAllTasks(parent, id) {
+    const res = await api.get('api/' + parent + '/' + id)
     console.log(res.data)
     AppState.tasks = res.data
   }
@@ -28,7 +28,6 @@ class TasksService {
   }
 
   async edit(task, newSprintId) {
-    debugger
     task.sprintId = newSprintId
     const res = await api.put('api/tasks/' + task.id, task)
   }
