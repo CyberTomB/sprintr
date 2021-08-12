@@ -26,7 +26,7 @@ PROJECT PAGE
 
 13.[x]	Tasks can be deleted
 
-14.[]	Tasks have a status field and can be changed between pending, in-progress, review or done
+14.[x]	Tasks have a status field and can be changed between pending, in-progress, review or done
 
 15.[x]	Tasks have a weight, which is calculated on the sprint and the backlog
 

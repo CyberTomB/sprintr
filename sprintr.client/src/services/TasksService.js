@@ -30,6 +30,7 @@ class TasksService {
   async editSprint(task, newSprintId) {
     task.sprintId = newSprintId
     const res = await api.put('api/tasks/' + task.id, task)
+    console.log(res.data)
   }
 
   async editStatus(task, newStatus) {

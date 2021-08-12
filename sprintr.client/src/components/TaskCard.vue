@@ -7,14 +7,19 @@
         </h4>
         <small class="mdi mdi-weight"> | {{ task.weight }}</small>
       </div>
-      <p class="card-text">
-        Sprint:
-        <select v-model="state.selected" @change="assignToSprint">
-          <option v-for="s in sprints" :key="s.id" :value="s.id">
-            {{ s.name }}
-          </option>
-        </select>
-      </p>
+      <div>
+        <p class="card-text" v-if="state.sprintSelectorOn">
+          Sprint:
+          <select v-model="state.selected" @change="assignToSprint">
+            <option v-for="s in sprints" :key="s.id" :value="s.id">
+              {{ s.name }}
+            </option>
+          </select>
+        </p>
+        <p v-else @click="changeSelectorOn('sprint')">
+          Sprint: {{ task.sprint.name }}
+        </p>
+      </div>
       <div>
         <p v-if="state.statusSelectorOn">
           Status: <select v-model="state.statusSelected" @change.stop="changeStatus">
@@ -23,7 +28,7 @@
             </option>
           </select>
         </p>
-        <p v-else @click="changeStatusSelectorOn">
+        <p v-else @click="changeSelectorOn('status')">
           Status: {{ task.status }}
         </p>
       </div>
@@ -49,6 +54,7 @@ export default {
   setup(props) {
     const state = reactive({
       selected: props.task.sprintId,
+      sprintSelectorOn: false,
       statusSelectorOn: false,
       statusSelected: props.task.status
     })
@@ -59,7 +65,9 @@ export default {
       async assignToSprint() {
         try {
           console.log('assigning')
+          this.changeSelectorOn('sprint')
           await tasksService.editSprint(props.task, state.selected)
+          location.reload()
           Pop.toast('success', 'success')
         } catch (error) {
           Pop.toast(error, 'error')
@@ -68,7 +76,7 @@ export default {
       async changeStatus() {
         try {
           console.log('status change')
-          this.changeStatusSelectorOn()
+          this.changeSelectorOn('status')
           await tasksService.editStatus(props.task, state.statusSelected)
           Pop.toast('Status Changed', 'success')
         } catch (error) {
@@ -78,8 +86,10 @@ export default {
       async deleteTask(id) {
         await tasksService.delete(id)
       },
-      changeStatusSelectorOn() {
-        state.statusSelectorOn = !state.statusSelectorOn
+      changeSelectorOn(type) {
+        if (type === 'status') { state.statusSelectorOn = !state.statusSelectorOn } else if (type === 'sprint') {
+          state.sprintSelectorOn = !state.sprintSelectorOn
+        }
       }
 
     }
