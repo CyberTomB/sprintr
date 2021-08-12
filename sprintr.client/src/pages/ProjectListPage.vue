@@ -26,14 +26,12 @@
 </template>
 
 <script>
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { projectsService } from '../services/ProjectsService'
-// TODO: Create "Add New Project" button
 
 export default {
   setup() {
     const router = useRouter()
-    const route = useRoute()
     const state = {
       newProject: {
         name: '',

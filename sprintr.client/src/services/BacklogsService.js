@@ -11,12 +11,23 @@ class BacklogsService {
 
   async create(newBacklogItem) {
     try {
-      debugger
       const res = await api.post('api/backlog', newBacklogItem)
       Pop.toast('Backlog Created')
       console.log(res.data)
     } catch (error) {
       Pop.toast(error)
+    }
+  }
+
+  async delete(id) {
+    if (await Pop.confirm()) {
+      try {
+        const res = await api.delete('api/backlog/' + id)
+        Pop.toast(res.data.message)
+        AppState.backlogItems = AppState.backlogItems.filter(p => p.id !== id)
+      } catch (error) {
+        Pop.toast(error)
+      }
     }
   }
 }

@@ -1,6 +1,9 @@
 <template>
   <div id="backlog-list" class="col-7">
-    <BacklogItemCard v-for="b in backlogItems" :key="b.id" :backlog-item="b" />
+    <div v-for="b in backlogItems" :key="b.id">
+      <BacklogItemCard :backlog-item="b" />
+      <i class="action mdi mdi-delete text-danger" @click="deleteProject(b.id)"></i>
+    </div>
   </div>
   <div class="col-5">
     <form @submit.prevent="createBacklogItem">
@@ -54,6 +57,9 @@ export default {
       async createBacklogItem() {
         console.log('created')
         await backlogsService.create(state.newBacklogItem)
+      },
+      async deleteProject(id) {
+        await backlogsService.delete(id)
       }
     }
   }
