@@ -1,12 +1,14 @@
 import BaseController from '../utils/BaseController'
 import { backlogItemsService } from '../services/BacklogItemsService'
 import { Auth0Provider } from '@bcwdev/auth0provider'
+import { tasksService } from '../services/TasksService'
 export class BacklogItemsController extends BaseController {
   constructor() {
     super('api/backlog')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
+      .get('/:id/tasks', this.getAllByBacklogId)
       .post('', this.create)
       .delete('/:id', this.destroy)
       .put('/:id', this.edit)
@@ -16,6 +18,15 @@ export class BacklogItemsController extends BaseController {
     try {
       const backlogItem = await backlogItemsService.getAll({ creatorId: req.userInfo.id })
       res.send(backlogItem)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getAllByBacklogId(req, res, next) {
+    try {
+      const tasks = await tasksService.getAll({ backlogItemId: req.params.id })
+      res.send(tasks)
     } catch (error) {
       next(error)
     }
