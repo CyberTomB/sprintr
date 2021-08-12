@@ -1,7 +1,6 @@
 <template>
   <div class="row">
-    <h1>TASKS GO HERE</h1>
-    <TaskCard />
+    <TaskCard v-for="t in task" :key="t.id " />>
     <div class="col">
       <form @submit.prevent="createTask">
         <div class="form-group">
