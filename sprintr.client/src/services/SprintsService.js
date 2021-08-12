@@ -23,6 +23,18 @@ class SprintsService {
       Pop.toast(error)
     }
   }
+
+  async delete(id) {
+    if (await Pop.confirm()) {
+      try {
+        const res = await api.delete('api/sprints/' + id)
+        Pop.toast(res.data.message)
+        AppState.sprints = AppState.sprints.filter(s => s.id !== id)
+      } catch (error) {
+        Pop.toast(error)
+      }
+    }
+  }
 }
 
 export const sprintsService = new SprintsService()

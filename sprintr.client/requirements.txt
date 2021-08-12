@@ -14,7 +14,7 @@ PROJECT PAGE
 
 7.[x]	From the Project Page a user can delete BacklogItems
 
-8.[]	Sprints can be created from the Project Page
+8.[x]	Sprints can be created from the Project Page
 
 9.[]	Sprints can be deleted
 

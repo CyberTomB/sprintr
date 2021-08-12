@@ -15,7 +15,7 @@
           Backlog
         </router-link>
       </li>
-      <li class="nav-item" role="presentation" v-for="(sprint) in sprints" :key="sprint.id">
+      <li class="nav-item" role="presentation" v-for="sprint in sprints" :key="sprint.id">
         <router-link
           :class="{active: route.params.sprint_id == sprint.id}"
           class="nav-link"
