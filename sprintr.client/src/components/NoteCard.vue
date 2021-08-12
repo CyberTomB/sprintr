@@ -15,6 +15,7 @@
           <p class="card-text">
             <small class="text-muted">Created At: {{ Date(note.createdAt) }}</small>
           </p>
+          <i class="action mdi mdi-delete text-danger" @click="deleteNote(note.id)"></i>
         </div>
       </div>
     </div>
@@ -22,7 +23,15 @@
 </template>
 
 <script>
+import { notesService } from '../services/NotesService'
 export default {
+  setup() {
+    return {
+      async deleteNote(id) {
+        await notesService.delete(id)
+      }
+    }
+  },
   props: {
     note: {
       type: Object,

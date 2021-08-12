@@ -32,9 +32,9 @@ PROJECT PAGE
 
 16.[x]	A user can add notes to a Task
 
-17.[]	A user can remove notes from a Task
+17.[x]	A user can remove notes from a Task
 
-18.[]	Note creators name and image displayed on the note
+18.[x]	Note creators name and image displayed on the note
 
 19.[x?]	Users can only modify/delete data they created
 
