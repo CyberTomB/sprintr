@@ -34,7 +34,7 @@
       </li>
     </ul>
   </div>
-  <div class="row py-3 tab-content" id="router-view">
+  <div class="row py-3 tab-content justify-content-around" id="router-view">
     <router-view></router-view>
   </div>
 </template>
