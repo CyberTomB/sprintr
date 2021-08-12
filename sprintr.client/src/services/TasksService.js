@@ -27,8 +27,13 @@ class TasksService {
     AppState.tasks = res.data
   }
 
-  async edit(task, newSprintId) {
+  async editSprint(task, newSprintId) {
     task.sprintId = newSprintId
+    const res = await api.put('api/tasks/' + task.id, task)
+  }
+
+  async editStatus(task, newStatus) {
+    task.status = newStatus
     const res = await api.put('api/tasks/' + task.id, task)
   }
 
