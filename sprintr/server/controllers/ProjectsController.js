@@ -2,6 +2,7 @@ import BaseController from '../utils/BaseController'
 import { projectsService } from '../services/ProjectsService'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { backlogItemsService } from '../services/BacklogItemsService'
+import { sprintsService } from '../services/SprintsService'
 export class ProjectsController extends BaseController {
   constructor() {
     super('api/projects')
@@ -9,6 +10,7 @@ export class ProjectsController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id/backlog', this.getAllBacklogItems)
+      .get('/:id/sprints', this.getAllSprints)
       .get('/:id', this.getOne)
       .post('', this.create)
       .delete('/:id', this.destroy)
@@ -37,6 +39,15 @@ export class ProjectsController extends BaseController {
     try {
       const backlog = await backlogItemsService.getAll({ projectId: req.params.id })
       res.send(backlog)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getAllSprints(req, res, next) {
+    try {
+      const sprints = await sprintsService.getAll({ projectId: req.params.id })
+      res.send(sprints)
     } catch (error) {
       next(error)
     }

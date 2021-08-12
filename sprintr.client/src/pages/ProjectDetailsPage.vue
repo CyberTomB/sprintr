@@ -14,15 +14,20 @@
           Backlog
         </router-link>
       </li>
-      <li class="nav-item" role="presentation">
-        <router-link class="nav-link"
-                     id="sprint-tab"
-                     data-toggle="tab"
-                     role="tab"
-                     :to="{name: 'SprintDetailsPage', params:{sprint_id: sprints[0].id}}"
+      <li class="nav-item" role="presentation" v-for="(sprint, index) in sprints" :key="sprint.id">
+        <router-link
+          class="nav-link"
+          id="sprint-tab"
+          data-toggle="tab"
+          role="tab"
+          :to="{name: 'SprintDetailsPage', params:{sprint_id: sprint.id}}"
+          @click="chooseSprint(index)"
         >
-          Sprint
+          {{ sprint.name }}
         </router-link>
+      </li>
+      <li class="nav-item" role="presentation">
+        <i class="mdi mdi-plus nav-link" id="add-tab" data-toggle="tab" role="tab"></i>
       </li>
     </ul>
   </div>
@@ -37,7 +42,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import { projectsService } from '../services/ProjectsService'
 import Pop from '../utils/Notifier'
-import { backlogsService } from '../services/BacklogsService'
+import { sprintsService } from '../services/SprintsService'
 export default {
   setup() {
     const route = useRoute()
@@ -46,6 +51,7 @@ export default {
       try {
         console.log(route.params.project_id)
         await projectsService.getProjectById(route.params.project_id)
+        await sprintsService.getSprintsByProjectId(route.params.project_id)
       } catch (error) {
         Pop.toast(error)
       }
@@ -55,6 +61,9 @@ export default {
       sprints: computed(() => AppState.sprints),
       projectListPage() {
         router.push({ name: 'ProjectList' })
+      },
+      chooseSprint(index) {
+        AppState.chosenSprint = AppState.sprints[index]
       }
     }
   }
