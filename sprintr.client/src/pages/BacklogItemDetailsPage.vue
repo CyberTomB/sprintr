@@ -74,7 +74,7 @@ export default {
       async createTask() {
         console.log('TASKACK')
         const id = await tasksService.create(state.newTask)
-        router.push({ name: 'BacklogDetailsPage', params: { backlog_id: id } })
+        router.push({ name: 'BacklogItemDetailsPage', params: { backlog_id: id } })
       }
     }
   }

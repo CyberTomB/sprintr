@@ -39,8 +39,8 @@ const routes = [
     },
     {
       path: 'backlog/:backlog_id',
-      name: 'BacklogDetailsPage',
-      component: loadPage('BacklogDetailsPage')
+      name: 'BacklogItemDetailsPage',
+      component: loadPage('BacklogItemDetailsPage')
     }],
     beforeEnter: authGuard
   }
