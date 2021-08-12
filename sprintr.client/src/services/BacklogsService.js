@@ -13,6 +13,7 @@ class BacklogsService {
     try {
       const res = await api.post('api/backlog', newBacklogItem)
       Pop.toast('Backlog Created')
+      AppState.backlogItems.push(res.data)
       console.log(res.data)
     } catch (error) {
       Pop.toast(error)

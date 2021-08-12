@@ -5,7 +5,8 @@
     </h1>
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item" role="presentation">
-        <router-link class="nav-link active"
+        <router-link :class="{active: route.name == 'Backlog'}"
+                     class="nav-link"
                      id="backlog-tab"
                      data-toggle="tab"
                      role="tab"
@@ -14,14 +15,14 @@
           Backlog
         </router-link>
       </li>
-      <li class="nav-item" role="presentation" v-for="(sprint, index) in sprints" :key="sprint.id">
+      <li class="nav-item" role="presentation" v-for="(sprint) in sprints" :key="sprint.id">
         <router-link
+          :class="{active: route.params.sprint_id == sprint.id}"
           class="nav-link"
           id="sprint-tab"
           data-toggle="tab"
           role="tab"
           :to="{name: 'SprintDetailsPage', params:{sprint_id: sprint.id}}"
-          @click="chooseSprint(index)"
         >
           {{ sprint.name }}
         </router-link>
@@ -57,13 +58,11 @@ export default {
       }
     })
     return {
+      route,
       project: computed(() => AppState.chosenProject),
       sprints: computed(() => AppState.sprints),
       projectListPage() {
         router.push({ name: 'ProjectList' })
-      },
-      chooseSprint(index) {
-        AppState.chosenSprint = AppState.sprints[index]
       }
     }
   }
