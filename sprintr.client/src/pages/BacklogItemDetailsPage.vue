@@ -53,7 +53,7 @@
 
 <script>
 import { useRoute, useRouter } from 'vue-router'
-import { computed, onMounted } from '@vue/runtime-core'
+import { computed, onMounted, reactive } from '@vue/runtime-core'
 import Pop from '../utils/Notifier'
 import { tasksService } from '../services/TasksService'
 import { AppState } from '../AppState'
@@ -63,7 +63,7 @@ export default {
     const router = useRouter()
     // Make sure the "useRoute" function is being imported, assign it to const "route" if you want to use it like this
     const route = useRoute()
-    const state = {
+    const state = reactive({
       newTask: {
         name: '',
         weight: '',
@@ -71,7 +71,7 @@ export default {
         projectId: route.params.project_id,
         backlogItemId: route.params.backlog_id
       }
-    }
+    })
     onMounted(async() => {
       try {
         await tasksService.getAllTasks('backlog', route.params.backlog_id)
@@ -84,7 +84,7 @@ export default {
       async createTask() {
         console.log('TASKACK')
         state.newTask.weight = Number(state.newTask.weight)
-        const id = await tasksService.create(state.newTask)
+        await tasksService.create(state.newTask)
         state.newTask = {
           projectId: route.params.project_id,
           backlogItemId: route.params.backlog_id

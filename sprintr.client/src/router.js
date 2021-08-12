@@ -51,6 +51,11 @@ const routes = [
       path: 'sprint/create',
       name: 'SprintFormPage',
       component: loadPage('SprintFormPage')
+    },
+    {
+      path: 'task/:task_id',
+      name: 'TaskDetailsPage',
+      component: loadPage('TaskDetailsPage')
     }],
     beforeEnter: authGuard
   }

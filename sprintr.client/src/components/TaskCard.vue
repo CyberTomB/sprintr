@@ -2,9 +2,11 @@
   <div class="card card-style">
     <div class="card-body">
       <div class="card-title">
-        <h4>
-          {{ task.name }}
-        </h4>
+        <router-link :to="{name: 'TaskDetailsPage', params: {task_id: task.id}}">
+          <h4>
+            {{ task.name }}
+          </h4>
+        </router-link>
         <small class="mdi mdi-weight"> | {{ task.weight }}</small>
       </div>
       <div>

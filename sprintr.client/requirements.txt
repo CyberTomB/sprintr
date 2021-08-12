@@ -30,7 +30,7 @@ PROJECT PAGE
 
 15.[x]	Tasks have a weight, which is calculated on the sprint and the backlog
 
-16.[]	A user can add notes to a Task
+16.[x]	A user can add notes to a Task
 
 17.[]	A user can remove notes from a Task
 
