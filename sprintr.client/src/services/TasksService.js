@@ -27,10 +27,16 @@ class TasksService {
     AppState.tasks = res.data
   }
 
+  async edit(task, newSprintId) {
+    debugger
+    task.sprintId = newSprintId
+    const res = await api.put('api/tasks/' + task.id, task)
+  }
+
   async delete(id) {
     if (await Pop.confirm()) {
       try {
-        const res = await api.delete('api/tasks' + id)
+        const res = await api.delete('api/tasks/' + id)
         Pop.toast(res.data.message)
         AppState.tasks = AppState.tasks.filter(t => t.id !== id)
       } catch (error) {

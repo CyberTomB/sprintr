@@ -23,5 +23,12 @@ Task.virtual('creator', {
   justOne: true
 }
 )
+Task.virtual('sprint', {
+  localField: 'sprintId',
+  ref: 'Sprint',
+  foreignField: '_id',
+  justOne: true
+}
+)
 
 export default Task

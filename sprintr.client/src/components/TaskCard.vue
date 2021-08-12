@@ -1,13 +1,18 @@
 <template>
-  <div class="card">
+  <div class="card card-style">
     <div class="card-body">
       <h4 class="card-title">
         {{ task.name }}
-        Status
       </h4>
       <p class="card-text">
-        Assign to:
+        <select v-model="state.selected" @change="assignToSprint">
+          <option v-for="s in sprints" :key="s.id" :value="s.id">
+            {{ s.name }}
+          </option>
+        </select>
+        Sprint:
       </p>
+      <p>Status: {{ task.status }}</p>
       <!-- <i class="action mdi mdi-delete text-danger" @click="deleteTask(t.id)"></i> -->
     </div>
   </div>
@@ -17,6 +22,10 @@
 </template>
 
 <script>
+import { computed, reactive } from '@vue/runtime-core'
+import { AppState } from '../AppState'
+import Pop from '../utils/Notifier'
+import { tasksService } from '../services/TasksService'
 // I hadn't written the props, so it was trying to reference a non-existent object as "task.name" but couldn't, which is why the page wasn't loading.
 // NOTE: This is where the backlogitemcard knows to receive the prop "b" as an object from the BacklogListPage
 export default {
@@ -25,6 +34,36 @@ export default {
       type: Object,
       required: true
     }
+  },
+  setup(props) {
+    const state = reactive({
+      selected: props.task.sprintId
+    })
+    return {
+      state,
+      sprints: computed(() => AppState.sprints),
+
+      async assignToSprint() {
+        try {
+          console.log('assigning')
+          await tasksService.edit(props.task, state.selected)
+          Pop.toast('success', 'success')
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      }
+
+    }
   }
 }
 </script>
+
+<style scoped>
+.card-style{
+  color:#000d2a;
+}
+
+.font-style{
+}
+
+</style>
