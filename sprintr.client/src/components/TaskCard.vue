@@ -15,15 +15,15 @@
           </option>
         </select>
       </p>
-      <div @click="changeStatusSelectorOn">
+      <div>
         <p v-if="state.statusSelectorOn">
-          Status: <select v-model="state.statusSelected" @change="changeStatus">
+          Status: <select v-model="state.statusSelected" @change.stop="changeStatus">
             <option v-for="(s, index) in status" :key="index" :value="s">
               {{ s }}
             </option>
           </select>
         </p>
-        <p v-else>
+        <p v-else @click="changeStatusSelectorOn">
           Status: {{ task.status }}
         </p>
       </div>
@@ -68,6 +68,7 @@ export default {
       async changeStatus() {
         try {
           console.log('status change')
+          this.changeStatusSelectorOn()
           await tasksService.editStatus(props.task, state.statusSelected)
           Pop.toast('Status Changed', 'success')
         } catch (error) {
