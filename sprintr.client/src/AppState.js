@@ -9,5 +9,6 @@ export const AppState = reactive({
   backlogItems: [{ name: 'backlog-test' }],
   sprints: [{ id: 'sprint-test' }],
   chosenSprint: {},
+  status: ['pending', 'in-progress', 'review', 'done'],
   tasks: []
 })
