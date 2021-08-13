@@ -1,41 +1,37 @@
 <template>
   <div class="col">
-    <div v-for="p in projects" :key="p.id">
-      <router-link :to="{name: 'Backlog', params: {project_id: p.id}}">
+    <div>
+      <router-link :to="{name: 'Backlog', params: {project_id: project.id}}">
         <div>
           <h1>
-            {{ p.name }}
+            {{ project.name }}
           </h1>
         </div>
       </router-link>
-      <i class="action mdi mdi-delete text-danger" @click="deleteProject(p.id)"></i>
+      <i class="action mdi mdi-delete text-danger" @click="deleteProject(project.id)"></i>
     </div>
   </div>
 </template>
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
-import { useRoute } from 'vue-router'
+import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
-import Pop from '../utils/Notifier'
 import { projectsService } from '../services/ProjectsService'
 
 export default {
   setup() {
-    const route = useRoute()
-    onMounted(async() => {
-      try {
-        await projectsService.getAll()
-      } catch (error) {
-        Pop.toast(error)
-      }
-    })
     return {
       account: computed(() => AppState.account),
       projects: computed(() => AppState.projects),
       async deleteProject(id) {
         await projectsService.delete(id)
       }
+    }
+  },
+  props: {
+    project: {
+      type: Object,
+      required: true
     }
   }
 }

@@ -6,9 +6,7 @@
     </div>
   </div>
   <div v-else class="col-7">
-    <div class="skeleton-loader text block w-75 py-4"></div>
-    <div class="skeleton-loader text block w-75 py-4"></div>
-    <div class="skeleton-loader text block w-75 py-4"></div>
+    <LoaderComponent />
   </div>
   <div class="col-5">
     <form @submit.prevent="createBacklogItem">

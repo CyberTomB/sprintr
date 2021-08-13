@@ -1,7 +1,12 @@
 <template>
-  <div class="row">
-    <ProjectListComponent />
-    <div class="col">
+  <div class="row justify-content-around">
+    <div class="col-6" v-if="projects[0]">
+      <ProjectCard v-for="p in projects" :key="p.id" :project="p" />
+    </div>
+    <div v-else class="col-6">
+      <LoaderComponent />
+    </div>
+    <div class="col-5" id="new-project-form">
       <form @submit.prevent="createProject">
         <div class="form-group">
           <label for="project-name">Project Name</label>
@@ -26,7 +31,9 @@
 </template>
 
 <script>
+import { computed, onMounted } from '@vue/runtime-core'
 import { useRouter } from 'vue-router'
+import { AppState } from '../AppState'
 import { projectsService } from '../services/ProjectsService'
 
 export default {
@@ -38,13 +45,21 @@ export default {
         description: ''
       }
     }
+    onMounted(async() => {
+      try {
+        await projectsService.getAll()
+      } catch (error) {
+        Pop.toast(error)
+      }
+    })
     return {
       state,
       async createProject() {
         console.log('ACK')
         const id = await projectsService.create(state.newProject)
         router.push({ name: 'Backlog', params: { project_id: id } })
-      }
+      },
+      projects: computed(() => AppState.projects)
     }
   }
 }
