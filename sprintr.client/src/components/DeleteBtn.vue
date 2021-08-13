@@ -1,6 +1,6 @@
 <template>
   <!-- NOTE: This button "emits" a "delete" event. When using this component, make sure to write an "@delete" property that handles what this event does -->
-  <i class="action mdi mdi-delete-outline text-danger" @click="$emit('delete')" :title="'Delete ' + itemName"></i>
+  <i class="action mdi mdi-trash-can-outline text-danger btn btn-outline" @click="$emit('delete')" :title="'Delete ' + itemName"></i>
 </template>
 
 <script>
@@ -13,3 +13,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.btn-outline{
+  border-color: #ff0077;
+}
+</style>
