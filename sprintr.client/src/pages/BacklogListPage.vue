@@ -24,7 +24,7 @@
       </div>
       <div class="form-group">
         <label for="backlog-item-description">Open</label>
-        <input type="checkbox" class="form-control" required id="backlog-item-description" v-model="state.newBacklogItem.isOpen" />
+        <input type="checkbox" class="form-control" id="backlog-item-description" v-model="state.newBacklogItem.isOpen" />
       </div>
       <button type="submit" class="btn btn-primary">
         CREATE
