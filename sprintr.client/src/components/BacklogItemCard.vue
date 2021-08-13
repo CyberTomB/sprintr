@@ -1,13 +1,13 @@
 <template>
   <div class="card p-2 my-2">
     <div class="row justify-content-between align-items-end">
-      <router-link :to="{name: 'BacklogItemDetailsPage', params: {backlog_id: backlogItem.id}}" class="col-8">
+      <router-link :to="{name: 'BacklogItemDetailsPage', params: {backlog_id: backlogItem.id}}" class="col-8" title="Backlog Details">
         <h2>
           {{ backlogItem.name }}
         </h2>
       </router-link>
       <div class="col-4 text-right">
-        <DeleteBtn @delete="deleteProject(backlogItem.id)" />
+        <DeleteBtn @delete="deleteProject(backlogItem.id)" :item-name="backlogItem.name" />
       </div>
     </div>
   </div>

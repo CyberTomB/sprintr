@@ -31,6 +31,8 @@ class SprintsService {
     if (sprint.creatorId.toString() !== userId) {
       throw new Forbidden('This is not your Sprint')
     }
+    // update tasks after deleting sprint
+    await dbContext.Task.updateMany({ sprintId: id }, { sprintId: null })
     return await dbContext.Sprint.findByIdAndDelete(id)
   }
 }

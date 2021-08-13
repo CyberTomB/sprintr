@@ -2,7 +2,7 @@
   <div class="card card-style">
     <div class="card-body">
       <div class="card-title">
-        <router-link :to="{name: 'TaskDetailsPage', params: {task_id: task.id}}">
+        <router-link :to="{name: 'TaskDetailsPage', params: {task_id: task.id}}" title="Task Details">
           <h4>
             {{ task.name }}
           </h4>
@@ -39,7 +39,7 @@
           Status: {{ task.status }}
         </p>
       </div>
-      <DeleteBtn @delete="deleteTask(task.id)" />
+      <DeleteBtn @delete="deleteTask(task.id)" :item-name="task.name" />
     </div>
   </div>
 </template>
