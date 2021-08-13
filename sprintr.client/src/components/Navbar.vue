@@ -136,6 +136,6 @@ a:hover {
   text-transform: uppercase;
 }
 .nav-item .nav-link.router-link-exact-active{
-  color: var(--danger);
+  color:deeppink;
 }
 </style>
