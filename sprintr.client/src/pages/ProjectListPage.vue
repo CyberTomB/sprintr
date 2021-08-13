@@ -3,7 +3,7 @@
     <h1>Current Projects:</h1>
   </div>
   <div class="row justify-content-around">
-    <div class="col-md-6" v-if="projects[0]">
+    <div class="col-md-6" v-if="projects">
       <ProjectCard v-for="p in projects" :key="p.id" :project="p" />
     </div>
     <div v-else class="col-6">
