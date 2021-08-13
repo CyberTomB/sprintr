@@ -7,7 +7,6 @@ class TasksService {
   // REVIEW: How do I make this RESTful?
   async getAllTasks(parent, id) {
     const res = await api.get('api/' + parent + '/' + id)
-    console.log(res.data)
     AppState.tasks = res.data
   }
 
@@ -16,7 +15,6 @@ class TasksService {
       const res = await api.post('api/tasks', newTask)
       AppState.tasks.push(res.data)
       Pop.toast('Task Created', 'success')
-      console.log(res.data)
     } catch (error) {
       Pop.toast(error)
     }
@@ -24,7 +22,6 @@ class TasksService {
 
   async getTasksByProjectId(id) {
     const res = await api.get('api/projects/' + id + '/tasks')
-    console.log(res.data)
     AppState.tasks = res.data
   }
 

@@ -64,7 +64,6 @@ export default {
       state,
       backlogItems: computed(() => AppState.backlogItems),
       async createBacklogItem() {
-        console.log('created')
         await backlogsService.create(state.newBacklogItem)
         state.newBacklogItem = { projectId: route.params.project_id }
       },

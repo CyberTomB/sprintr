@@ -6,7 +6,6 @@ class ProjectsService {
   }
 
   async getById(id) {
-    console.log('server service:', id)
     const project = await dbContext.Project.findById(id)
     return project
   }

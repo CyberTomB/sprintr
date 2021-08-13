@@ -85,7 +85,6 @@ export default {
     return {
       state,
       async createTask() {
-        console.log('TASKACK')
         state.newTask.weight = Number(state.newTask.weight)
         await tasksService.create(state.newTask)
         state.newTask = {

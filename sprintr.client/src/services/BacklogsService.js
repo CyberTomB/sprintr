@@ -5,7 +5,6 @@ import { api } from './AxiosService'
 class BacklogsService {
   async getBacklogItemsByProjectId(id) {
     const res = await api.get('api/projects/' + id + '/backlog')
-    console.log(res.data)
     AppState.backlogItems = res.data
   }
 
@@ -14,7 +13,6 @@ class BacklogsService {
       const res = await api.post('api/backlog', newBacklogItem)
       Pop.toast('Backlog Created', 'success')
       AppState.backlogItems.push(res.data)
-      console.log(res.data)
     } catch (error) {
       Pop.toast(error)
     }

@@ -59,7 +59,6 @@ export default {
     return {
       state,
       async createProject() {
-        console.log('ACK')
         const id = await projectsService.create(state.newProject)
         router.push({ name: 'Backlog', params: { project_id: id } })
       },

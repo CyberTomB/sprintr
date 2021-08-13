@@ -56,7 +56,6 @@ export default {
     const router = useRouter()
     onMounted(async() => {
       try {
-        console.log(route.params.project_id)
         await projectsService.getProjectById(route.params.project_id)
         await sprintsService.getSprintsByProjectId(route.params.project_id)
       } catch (error) {

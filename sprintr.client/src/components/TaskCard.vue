@@ -78,7 +78,6 @@ export default {
           state.selected = null
         }
         try {
-          console.log('assigning')
           this.changeSelectorOn('sprint')
           const newSprintName = await tasksService.editSprint(props.task, state.selected)
           state.sprintName = newSprintName
@@ -91,7 +90,6 @@ export default {
       },
       async changeStatus() {
         try {
-          console.log('status change')
           this.changeSelectorOn('status')
           await tasksService.editStatus(props.task, state.statusSelected)
           Pop.toast('Status Changed', 'success')

@@ -6,7 +6,6 @@ class SprintsService {
   async getSprintsByProjectId(id) {
     try {
       const res = await api.get('api/projects/' + id + '/sprints')
-      console.log(res.data)
       AppState.sprints = res.data
     } catch (error) {
       Pop.toast(error)
@@ -18,7 +17,6 @@ class SprintsService {
       const res = await api.post('api/sprints', newSprint)
       Pop.toast('Sprint Created', 'success')
       AppState.sprints.push(res.data)
-      console.log('new sprint', res.data)
     } catch (error) {
       Pop.toast(error)
     }
