@@ -25,7 +25,7 @@
           <label for="project-description">Description</label>
           <textarea class="form-control" required id="project-description" v-model="state.newProject.description" />
         </div>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" title="create project">
           CREATE
         </button>
       </form>
