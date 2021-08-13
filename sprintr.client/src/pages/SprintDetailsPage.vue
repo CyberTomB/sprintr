@@ -1,20 +1,23 @@
 <template>
   <div v-if="sprint" class="col-12">
-    <div class="row justify-content-between align-items-end py-3">
-      <h1 class="col-8">
-        {{ sprint.name }}:
-      </h1>
-      <small>
-        <u>Start:</u> {{ createdstartDate }}
-        <br />
-        <u>End:</u> {{ createdendDate }}
-      </small>
+    <div class="row justify-content-between py-3 align-items-center">
+      <div class="col-8 d-flex align-items-center">
+        <h1><u>{{ sprint.name }}:</u></h1>
+
+        &nbsp;Tasks: {{ tasksDone.length }} / {{ tasks.length }} || Weight: {{ sprintTaskWeight }}
+      </div>
       <br />
-      <small>Tasks: {{ tasksDone.length }} / {{ tasks.length }} | Weight: {{ sprintTaskWeight }}</small>
-      <div class="col-2">
-        <button class="btn btn-danger" @click="deleteSprint" :title="'Delete ' + sprint.name">
-          DELETE SPRINT
-        </button>
+      <div class="col-4 d-flex justify-content-end align-items-center pr-5">
+        <small>
+          <u>Start:</u> {{ createdstartDate }}
+          <br />
+          <u>End:</u> {{ createdendDate }}
+        </small>
+        <div class="col-2 ">
+          <button class="btn btn-danger" @click="deleteSprint" :title="'Delete ' + sprint.name">
+            DELETE SPRINT
+          </button>
+        </div>
       </div>
     </div>
     <div class="row py-3 mx-2">

@@ -1,16 +1,16 @@
 <template>
   <div class="card card-style">
     <div class="card-body">
-      <div class="card-title">
+      <div class="card-title title-style">
         <router-link :to="{name: 'TaskDetailsPage', params: {task_id: task.id}}" title="Task Details">
           <h4>
             {{ task.name }}
           </h4>
         </router-link>
-        <small class="mdi mdi-weight"> | {{ task.weight }}</small>
       </div>
-      <div>
-        <p class="card-text" v-if="state.sprintSelectorOn">
+      <small class="mdi mdi-weight"> &nbsp; {{ task.weight }}</small>
+      <div class="action">
+        <p class="card-text " v-if="state.sprintSelectorOn">
           Sprint:
           <select v-model="state.selected" @change="assignToSprint">
             <option value="none">
@@ -27,7 +27,7 @@
           <span v-else><em>Assign Sprint</em></span>
         </p>
       </div>
-      <div>
+      <div class="action">
         <p v-if="state.statusSelectorOn">
           Status: <select v-model="state.statusSelected" @change.stop="changeStatus">
             <option v-for="(s, index) in status" :key="index" :value="s">
@@ -117,8 +117,7 @@ export default {
 .card-style{
   color:#000d2a;
 }
-
-.font-style{
+.title-style{
+    text-shadow: 2px 1px black;
 }
-
 </style>

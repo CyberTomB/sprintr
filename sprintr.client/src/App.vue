@@ -32,6 +32,7 @@ export default {
 .nav-style{
   background-color:#000d2a ;
   color: #d9d9dd;
+  text-shadow: 2px 2px black;
 }
 
 .action {

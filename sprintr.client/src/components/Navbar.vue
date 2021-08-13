@@ -115,6 +115,7 @@ export default {
   border: 1px;
   border-color: #d9d9dd;
   border-style: solid;
+  text-shadow: 2px 2px black;
 }
 
 .dropdown-menu {
