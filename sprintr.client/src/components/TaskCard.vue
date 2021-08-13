@@ -21,6 +21,7 @@
             </option>
           </select>
         </p>
+        <!-- TODO: Tasks should disappear if assigned to a different sprint -->
         <p v-else @click="changeSelectorOn('sprint')">
           Sprint:   <span v-if="state.sprintName">{{ state.sprintName }}</span>
           <span v-else><em>Assign Sprint</em></span>
