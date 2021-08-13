@@ -1,20 +1,19 @@
 <template>
-  <div class="card mb-3" style="max-width: 540px;" v-if="note.creator">
+  <div class="card mb-3 text-dark" style="max-width: 540px;" v-if="note.creator">
     <div class="row no-gutters">
-      <div class="col-md-4">
-        <img :src="note.creator.picture" alt="...">
+      <div class="col-md-4 p-2">
+        <img :src="note.creator.picture" :alt="note.creator.name" :title="note.creator.name">
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">
-            {{ note.creator.name }}
-          </h5>
           <p class="card-text">
             {{ note.body }}
           </p>
-          <p class="card-text">
-            <small class="text-muted">Created At: {{ Date(note.createdAt) }}</small>
-          </p>
+          <div class="card-text">
+            <small class="text-darkgrey">Created By: {{ note.creator.name }}</small>
+            <br>
+            <small>{{ Date(note.createdAt) }}</small>
+          </div>
           <DeleteBtn @delete="deleteNote(note.id)" />
         </div>
       </div>

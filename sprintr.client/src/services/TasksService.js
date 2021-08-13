@@ -1,6 +1,7 @@
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
 import Pop from '../utils/Notifier'
+import { logger } from '../utils/Logger'
 
 class TasksService {
   // REVIEW: How do I make this RESTful?
@@ -30,7 +31,8 @@ class TasksService {
   async editSprint(task, newSprintId) {
     task.sprintId = newSprintId
     const res = await api.put('api/tasks/' + task.id, task)
-    console.log(res.data)
+    logger.log(res.data)
+    return res.data.sprint ? res.data.sprint.name : null
   }
 
   async editStatus(task, newStatus) {

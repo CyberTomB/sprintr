@@ -17,7 +17,7 @@ class TasksService {
 
   async edit(body) {
     await this.getById(body.id)
-    const task = await dbContext.Task.findByIdAndUpdate(body.id, body, { new: true, runValidators: true })
+    const task = await dbContext.Task.findByIdAndUpdate(body.id, body, { new: true, runValidators: true }).populate('sprint')
     return task
   }
 

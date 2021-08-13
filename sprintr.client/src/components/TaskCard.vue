@@ -10,16 +10,20 @@
         <small class="mdi mdi-weight"> | {{ task.weight }}</small>
       </div>
       <div>
+        <small>{{ sprintNames }}</small>
         <p class="card-text" v-if="state.sprintSelectorOn">
           Sprint:
           <select v-model="state.selected" @change="assignToSprint">
+            <option value="none">
+              No Sprint
+            </option>
             <option v-for="s in sprints" :key="s.id" :value="s.id">
               {{ s.name }}
             </option>
           </select>
         </p>
         <p v-else @click="changeSelectorOn('sprint')">
-          Sprint:  <span v-if="task.sprint">{{ task.sprint.name }}</span>
+          Sprint:   <span v-if="state.sprintName">{{ state.sprintName }}</span>
           <span v-else><em>Assign Sprint</em></span>
         </p>
       </div>
@@ -59,18 +63,27 @@ export default {
       selected: props.task.sprintId,
       sprintSelectorOn: false,
       statusSelectorOn: false,
-      statusSelected: props.task.status
+      statusSelected: props.task.status,
+      sprintName: props.task.sprint ? props.task.sprint.name : null
     })
     return {
       state,
+      sprintNames: computed(() => AppState.sprints.map(function(sprint) {
+        return sprint.name
+      })),
       sprints: computed(() => AppState.sprints),
       status: computed(() => AppState.status),
       async assignToSprint() {
+        if (state.selected === 'none') {
+          state.selected = null
+        }
         try {
           console.log('assigning')
           this.changeSelectorOn('sprint')
-          await tasksService.editSprint(props.task, state.selected)
-          location.reload()
+          const newSprintName = await tasksService.editSprint(props.task, state.selected)
+          state.sprintName = newSprintName
+
+          // location.reload()
           Pop.toast('success', 'success')
         } catch (error) {
           Pop.toast(error, 'error')
