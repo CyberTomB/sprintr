@@ -8,7 +8,10 @@
   </div>
   <div class="col-5">
     <div class="text-right">
-      <DeleteBtn @delete="deleteProject()" :item-name="'project'" />
+      <DeleteBtn @delete="deleteProject()" :item-name="'project'">
+        <!-- NOTE: This will be inserted in the "slot" on the component -->
+        Delete Project
+      </DeleteBtn>
     </div>
     <form @submit.prevent="createBacklogItem">
       <div class="form-group">
@@ -40,11 +43,12 @@
 import { computed, onMounted, reactive } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { backlogsService } from '../services/BacklogsService'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { projectsService } from '../services/ProjectsService'
 export default {
   setup() {
     const route = useRoute()
+    const router = useRouter()
     const state = reactive({
       newBacklogItem: {
         name: '',
@@ -66,6 +70,7 @@ export default {
       },
       async deleteProject() {
         await projectsService.delete(route.params.project_id)
+        router.push({ name: 'ProjectList' })
       }
     }
   }
