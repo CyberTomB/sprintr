@@ -20,6 +20,11 @@ class BacklogsService {
     }
   }
 
+  async editIsOpen(backlogItem, openStatus) {
+    backlogItem.isOpen = openStatus
+    const res = await api.put('api/backlog/' + backlogItem.id, backlogItem)
+  }
+
   async delete(id) {
     if (await Pop.confirm()) {
       try {

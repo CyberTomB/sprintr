@@ -7,6 +7,8 @@
         </h2>
       </router-link>
       <div class="col-4 text-right">
+        <i class="mx-2 mdi btn" :class="[state.isOpen ? state.openClass : state.closedClass]" @click="changeOpen" :title="state.isOpen? 'Open' : 'Closed'">
+        </i>
         <DeleteBtn @delete="deleteProject(backlogItem.id)" :item-name="backlogItem.name" />
       </div>
     </div>
@@ -14,13 +16,30 @@
 </template>
 
 <script>
+import { reactive } from '@vue/reactivity'
 import { backlogsService } from '../services/BacklogsService'
+import Pop from '../utils/Notifier'
 export default {
   // NOTE: This is where the backlogitemcard knows to receive the prop "b" as an object from the BacklogListPage
-  setup() {
+  setup(props) {
+    const state = reactive({
+      isOpen: props.backlogItem.isOpen,
+      openClass: 'btn-success mdi-progress-check',
+      closedClass: 'btn-dark mdi-checkbox-marked-circle'
+    })
     return {
+      state,
       async deleteProject(id) {
         await backlogsService.delete(id)
+      },
+      async changeOpen() {
+        try {
+          state.isOpen = !state.isOpen
+          await backlogsService.editIsOpen(props.backlogItem, state.isOpen)
+          Pop.toast('Status Changed', 'success')
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
       }
     }
   },
@@ -34,7 +53,5 @@ export default {
 </script>
 
 <style scoped>
-.router-link{
-  background-color: red;
-}
+
 </style>

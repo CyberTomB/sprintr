@@ -3,8 +3,8 @@
     <h1 v-if="backlog" class="pb-3">
       {{ backlog.name }}<br />
       <div class="div">
-        <small v-if="backlogTaskWeight">Weight: {{ backlogTaskWeight }}
-          Completed: {{ tasksDone.length }} / {{ tasks.length }}</small>
+        <small v-if="backlogTaskWeight" class="text-light">Weight: <span class="text-warning">{{ backlogTaskWeight }}</span> |
+          Completed: <span class="text-success">{{ tasksDone.length }} / {{ tasks.length }}</span></small>
       </div>
     </h1>
   </div>
