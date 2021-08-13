@@ -10,7 +10,6 @@ class NotesService {
 
   async create(newNote) {
     const res = await api.post('api/notes', newNote)
-    // REVIEW  How to populate creator data on a create req
     AppState.notes.push(res.data)
   }
 

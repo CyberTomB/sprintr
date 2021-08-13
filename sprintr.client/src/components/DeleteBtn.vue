@@ -16,6 +16,7 @@ export default {
 
 <style scoped>
 .btn-outline{
-  border-color: #ff0077;
+  /* REVIEW How do I make this always match danger variable? */
+  border-color: #be0059;
 }
 </style>
