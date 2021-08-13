@@ -7,6 +7,7 @@
         </h2>
       </router-link>
       <div class="col-4 text-right">
+        <!-- NOTE: the class is bound to the state "isOpen" property, which is a bool. Then supplies a string from the state as needed. -->
         <i class="mx-2 mdi btn" :class="[state.isOpen ? state.openClass : state.closedClass]" @click="changeOpen" :title="state.isOpen? 'Open' : 'Closed'">
         </i>
         <DeleteBtn @delete="deleteProject(backlogItem.id)" :item-name="backlogItem.name" />
