@@ -7,6 +7,9 @@
     <LoaderComponent />
   </div>
   <div class="col-5">
+    <div class="text-right">
+      <DeleteBtn @delete="deleteProject()" :item-name="'project'" />
+    </div>
     <form @submit.prevent="createBacklogItem">
       <div class="form-group">
         <label for="backlog-item-name">Backlog Name</label>
@@ -38,6 +41,7 @@ import { computed, onMounted, reactive } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { backlogsService } from '../services/BacklogsService'
 import { useRoute } from 'vue-router'
+import { projectsService } from '../services/ProjectsService'
 export default {
   setup() {
     const route = useRoute()
@@ -59,6 +63,9 @@ export default {
         console.log('created')
         await backlogsService.create(state.newBacklogItem)
         state.newBacklogItem = { projectId: route.params.project_id }
+      },
+      async deleteProject() {
+        await projectsService.delete(route.params.project_id)
       }
     }
   }
