@@ -46,4 +46,8 @@ export default {
   border-style: solid;
 }
 
+.card a{
+  color: black;
+}
+
 </style>

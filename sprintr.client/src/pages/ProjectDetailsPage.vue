@@ -77,3 +77,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.nav-tabs .nav-link.active{
+  color:azure;
+}
+</style>
