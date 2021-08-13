@@ -10,6 +10,7 @@
       </div>
       <small class="mdi mdi-weight"> &nbsp; {{ task.weight }}</small>
       <div class="action">
+        <!-- NOTE: Checks a bool on the appstate when clicked and either opens or closes the dropdown menu -->
         <p class="card-text " v-if="state.sprintSelectorOn">
           Sprint:
           <select v-model="state.selected" @change="assignToSprint">
