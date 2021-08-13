@@ -3,6 +3,13 @@
     <div class="row justify-content-between align-items-end py-3">
       <h1 class="col-8">
         {{ sprint.name }}:
+        <br />
+        <small>
+          <u>Start:</u> {{ createdstartDate }}
+          <br />
+          <u>End:</u> {{ createdendDate }}
+        </small>
+        <br />
         <small>Tasks: {{ tasksDone.length }} / {{ tasks.length }} | Weight: {{ sprintTaskWeight }}</small>
       </h1>
       <div class="col-2">
@@ -56,6 +63,16 @@ export default {
         await sprintsService.delete(route.params.sprint_id)
         router.push({ name: 'Backlog' })
       },
+      createdstartDate: computed(() => {
+        const sprint = AppState.sprints.find(s => s.id === route.params.sprint_id)
+        const d = new Date(sprint.startDate)
+        return new Intl.DateTimeFormat('en-US').format(d)
+      }),
+      createdendDate: computed(() => {
+        const sprint = AppState.sprints.find(s => s.id === route.params.sprint_id)
+        const d = new Date(sprint.endDate)
+        return new Intl.DateTimeFormat('en-US').format(d)
+      }),
       tasks: computed(() => AppState.tasks),
       tasksDone: computed(() => AppState.tasks.filter(t => t.status === 'done')),
       sprintTaskWeight: computed(() => {
