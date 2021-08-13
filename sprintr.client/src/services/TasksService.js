@@ -32,6 +32,7 @@ class TasksService {
     task.sprintId = newSprintId
     const res = await api.put('api/tasks/' + task.id, task)
     logger.log(res.data)
+    // REVIEW This convoluted function checks if the resultant data has a name
     return res.data.sprint ? res.data.sprint.name : null
   }
 
