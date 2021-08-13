@@ -17,8 +17,9 @@
       aria-controls="navbarText"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      title="Menu"
     >
-      <span class="navbar-toggler-icon" />
+      <span class="mdi mdi-menu text-light" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto nav-tabs">
@@ -36,6 +37,7 @@
       <span class="navbar-text">
         <button
           class="btn btn-outline-primary text-uppercase"
+          title="Login"
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -46,6 +48,7 @@
           <div
             class="dropdown-toggle"
             @click="state.dropOpen = !state.dropOpen"
+            title="Account Options"
           >
             <img
               :src="user.picture"
@@ -68,6 +71,7 @@
             <div
               class="list-group-item list-group-item-action hoverable"
               @click="logout"
+              title="Logout"
             >
               logout
             </div>
