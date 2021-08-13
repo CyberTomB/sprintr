@@ -115,7 +115,6 @@ export default {
   border: 1px;
   border-color: #d9d9dd;
   border-style: solid;
-  text-shadow: 2px 2px black;
 }
 
 .dropdown-menu {
@@ -137,6 +136,6 @@ a:hover {
   text-transform: uppercase;
 }
 .nav-item .nav-link.router-link-exact-active{
-  color: var(--light);
+  color: var(--danger);
 }
 </style>
