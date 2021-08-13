@@ -1,10 +1,14 @@
 <template>
-  <div id="backlog-list" class="col-7">
-    <div v-for="b in backlogItems" :key="b.id">
+  <div id="backlog-list" class="col-7" v-if="backlogItems[0]">
+    <div class="d-flex justify-content-between">
       <!-- NOTE: This is where the props for the backlogitemcard are being defined (each one is a "b" which is a backlogItem object) -->
-      <BacklogItemCard :backlog-item="b" />
-      <i class="action mdi mdi-delete text-danger" @click="deleteProject(b.id)"></i>
+      <BacklogItemCard v-for="b in backlogItems" :key="b.id" :backlog-item="b" />
     </div>
+  </div>
+  <div v-else class="col-7">
+    <div class="skeleton-loader text block w-75 py-4"></div>
+    <div class="skeleton-loader text block w-75 py-4"></div>
+    <div class="skeleton-loader text block w-75 py-4"></div>
   </div>
   <div class="col-5">
     <form @submit.prevent="createBacklogItem">
@@ -59,9 +63,6 @@ export default {
         console.log('created')
         await backlogsService.create(state.newBacklogItem)
         state.newBacklogItem = { projectId: route.params.project_id }
-      },
-      async deleteProject(id) {
-        await backlogsService.delete(id)
       }
     }
   }

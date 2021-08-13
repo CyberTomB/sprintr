@@ -1,6 +1,7 @@
 <template>
   <div class="about">
-    <h1>This is the about page</h1>
+    <h1>How to use Runnr:</h1>
+    <h3>Somehow, this is supposed to improve your productivity. You figure it out.</h3>
   </div>
 </template>
 

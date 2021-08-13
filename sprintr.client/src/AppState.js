@@ -6,7 +6,7 @@ export const AppState = reactive({
   account: {},
   projects: [{ name: 'test' }],
   chosenProject: {},
-  backlogItems: [{ name: 'backlog-test' }],
+  backlogItems: [],
   sprints: [{ id: 'sprint-test' }],
   chosenSprint: {},
   status: ['pending', 'in-progress', 'review', 'done'],
