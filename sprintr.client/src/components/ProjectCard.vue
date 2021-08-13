@@ -1,7 +1,7 @@
 <template>
   <div class="card p-2 my-2">
     <div class="row justify-content-between align-items-end">
-      <router-link :to="{name: 'Backlog', params: {project_id: project.id}}" class="col-8">
+      <router-link :to="{name: 'Backlog', params: {project_id: project.id}}" class="col-8" title="Backlog">
         <h1>
           {{ project.name }}
         </h1>

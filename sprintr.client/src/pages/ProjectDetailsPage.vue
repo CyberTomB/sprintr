@@ -6,6 +6,7 @@
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item" role="presentation">
         <router-link :class="{active: route.name == 'Backlog'}"
+                     title="Backlog"
                      class="nav-link"
                      id="backlog-tab"
                      data-toggle="tab"
@@ -18,6 +19,7 @@
       <li class="nav-item" role="presentation" v-for="sprint in sprints" :key="sprint.id">
         <router-link
           :class="{active: route.params.sprint_id == sprint.id}"
+          :title="sprint.name"
           class="nav-link"
           id="sprint-tab"
           data-toggle="tab"
@@ -29,7 +31,7 @@
         </router-link>
       </li>
       <li class="nav-item" role="presentation">
-        <router-link :to="{name: 'SprintFormPage'}">
+        <router-link :to="{name: 'SprintFormPage'}" title="Create Sprint">
           <i class="mdi mdi-plus nav-link" id="add-tab" data-toggle="tab" role="tab" :class="{active: route.name == 'SprintFormPage'}">Add Sprint</i>
         </router-link>
       </li>

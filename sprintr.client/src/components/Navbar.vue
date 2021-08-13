@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg nav-style">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }" title="Home">
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
@@ -23,12 +23,12 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto nav-tabs">
         <li class="nav-item">
-          <router-link :to="{ name: 'ProjectList' }" class="nav-link">
+          <router-link :to="{ name: 'ProjectList' }" class="nav-link" title="Projects">
             Projects
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link :to="{ name: 'About' }" class="nav-link">
+          <router-link :to="{ name: 'About' }" class="nav-link" title="About">
             About
           </router-link>
         </li>
@@ -60,7 +60,7 @@
             :class="{ show: state.dropOpen }"
             @click="state.dropOpen = false"
           >
-            <router-link :to="{ name: 'Account' }">
+            <router-link :to="{ name: 'Account' }" title="Account">
               <div class="list-group-item list-group-item-action hoverable">
                 Account
               </div>
