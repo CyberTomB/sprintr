@@ -1,6 +1,6 @@
 <template>
   <div class="row bg-dark align-items-end justify-content-between">
-    <h1 @click="projectListPage" class="action m-3">
+    <h1 @click="projectListPage" class="action m-3" title="Projects Page">
       Project: {{ project.name }}
     </h1>
     <ul class="nav nav-tabs" role="tablist">

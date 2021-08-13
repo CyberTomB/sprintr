@@ -48,7 +48,7 @@ export default {
 }
 
 .card a{
-  color: black;
+  color: #370042;
 }
 
 </style>
