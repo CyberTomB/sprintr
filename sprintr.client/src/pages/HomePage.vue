@@ -5,9 +5,9 @@
       <div class="card-body">
         <img src="../assets/img/nav-logo.png" height="600vh" width="600vw" alt="'no image found'">
         <br />
-        <p class="card-text">
-          This is not a drill
-        </p>
+        <h1 class="card-text">
+          Runnr
+        </h1>
       </div>
     </div>
   </div>
@@ -29,9 +29,6 @@ export default {
 .card-style{
   background-color:#000d2a ;
   color: #d9d9dd;
-  border: 1px;
-  border-color: #d9d9dd;
-  border-style: solid;
 
 }
 .home{

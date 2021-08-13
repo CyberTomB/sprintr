@@ -7,7 +7,7 @@
       <router-view />
     </div>
   </main>
-  <footer>
+  <footer class="footer-style">
     <div class="nav-style text-center p-4">
       Made with 🔋 by Tom and Sam
     </div>
@@ -36,6 +36,14 @@ export default {
 
 .action {
   cursor: pointer;
+}
+
+.footer-style{
+  background-color:#000d2a ;
+  color: #d9d9dd;
+  border: 1px;
+  border-color: #d9d9dd;
+  border-style: solid;
 }
 
 </style>
