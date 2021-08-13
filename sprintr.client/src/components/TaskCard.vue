@@ -10,7 +10,6 @@
         <small class="mdi mdi-weight"> | {{ task.weight }}</small>
       </div>
       <div>
-        <small>{{ sprintNames }}</small>
         <p class="card-text" v-if="state.sprintSelectorOn">
           Sprint:
           <select v-model="state.selected" @change="assignToSprint">
