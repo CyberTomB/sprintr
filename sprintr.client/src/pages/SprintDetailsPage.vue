@@ -3,15 +3,14 @@
     <div class="row justify-content-between align-items-end py-3">
       <h1 class="col-8">
         {{ sprint.name }}:
-        <br />
-        <small>
-          <u>Start:</u> {{ createdstartDate }}
-          <br />
-          <u>End:</u> {{ createdendDate }}
-        </small>
-        <br />
-        <small>Tasks: {{ tasksDone.length }} / {{ tasks.length }} | Weight: {{ sprintTaskWeight }}</small>
       </h1>
+      <small>
+        <u>Start:</u> {{ createdstartDate }}
+        <br />
+        <u>End:</u> {{ createdendDate }}
+      </small>
+      <br />
+      <small>Tasks: {{ tasksDone.length }} / {{ tasks.length }} | Weight: {{ sprintTaskWeight }}</small>
       <div class="col-2">
         <button class="btn btn-danger" @click="deleteSprint" :title="'Delete ' + sprint.name">
           DELETE SPRINT
