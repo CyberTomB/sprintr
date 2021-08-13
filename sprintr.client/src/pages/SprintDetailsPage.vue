@@ -6,7 +6,7 @@
         <small>Tasks: {{ tasksDone.length }} / {{ tasks.length }} | Weight: {{ sprintTaskWeight }}</small>
       </h1>
       <div class="col-2">
-        <button class="btn btn-danger" @click="deleteSprint">
+        <button class="btn btn-danger" @click="deleteSprint" :title="'Delete ' + sprint.name">
           DELETE SPRINT
         </button>
       </div>

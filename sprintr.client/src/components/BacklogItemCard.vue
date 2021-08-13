@@ -7,7 +7,7 @@
         </h2>
       </router-link>
       <div class="col-4 text-right">
-        <DeleteBtn @delete="deleteProject(backlogItem.id)" />
+        <DeleteBtn @delete="deleteProject(backlogItem.id)" :item-name="backlogItem.name" />
       </div>
     </div>
   </div>

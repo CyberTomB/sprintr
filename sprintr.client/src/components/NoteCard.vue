@@ -14,7 +14,7 @@
             <br>
             <small>{{ Date(note.createdAt) }}</small>
           </div>
-          <DeleteBtn @delete="deleteNote(note.id)" />
+          <DeleteBtn @delete="deleteNote(note.id)" :item-name="'note'" />
         </div>
       </div>
     </div>

@@ -39,7 +39,7 @@
           Status: {{ task.status }}
         </p>
       </div>
-      <DeleteBtn @delete="deleteTask(task.id)" />
+      <DeleteBtn @delete="deleteTask(task.id)" :item-name="task.name" />
     </div>
   </div>
 </template>
