@@ -9,7 +9,7 @@
         <label for="note"></label>
         <textarea name="note" id="new-note-textarea" cols="30" rows="10" v-model="state.newNote.body"></textarea>
       </div>
-      <button type="submit" class="btn btn-success">
+      <button type="submit" class="btn btn-success" title="Create Note">
         ADD NOTE
       </button>
     </form>

@@ -30,7 +30,7 @@
              v-model="state.newSprint.endDate"
       >
     </div>
-    <button type="submit" class="btn btn-success">
+    <button type="submit" class="btn btn-success" title="Create Sprint">
       ADD
     </button>
   </form>
