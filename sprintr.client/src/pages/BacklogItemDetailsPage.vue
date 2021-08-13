@@ -1,8 +1,11 @@
 <template>
   <div class="col-12">
     <h1 v-if="backlog" class="pb-3">
-      {{ backlog.name }}
-      <small v-if="backlogTaskWeight">Weight: {{ backlogTaskWeight }} Completed: {{ tasksDone.length }} / {{ tasks.length }}</small>
+      {{ backlog.name }}<br />
+      <div class="div">
+        <small v-if="backlogTaskWeight">Weight: {{ backlogTaskWeight }}
+          Completed: {{ tasksDone.length }} / {{ tasks.length }}</small>
+      </div>
     </h1>
   </div>
   <div class="col-7" id="tasks-list">
