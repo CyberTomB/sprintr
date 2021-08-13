@@ -117,7 +117,5 @@ export default {
 .card-style{
   color:#000d2a;
 }
-.title-style{
-    text-shadow: 2px 1px black;
-}
+
 </style>
