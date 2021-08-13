@@ -35,7 +35,7 @@
           Status: {{ task.status }}
         </p>
       </div>
-      <i class="action mdi mdi-delete text-danger" @click="deleteTask(task.id)"></i>
+      <DeleteBtn @delete="deleteTask(task.id)" />
     </div>
   </div>
 </template>

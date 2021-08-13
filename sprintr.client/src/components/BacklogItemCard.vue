@@ -6,7 +6,7 @@
           {{ backlogItem.name }}
         </h5>
       </router-link>
-      <i class="action mdi mdi-delete-outline btn btn-danger" @click="deleteProject(backlogItem.id)"></i>
+      <DeleteBtn @delete="deleteProject(backlogItem.id)" />
     </div>
   </div>
 </template>

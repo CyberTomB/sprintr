@@ -15,7 +15,7 @@
           <p class="card-text">
             <small class="text-muted">Created At: {{ Date(note.createdAt) }}</small>
           </p>
-          <i class="action mdi mdi-delete text-danger" @click="deleteNote(note.id)"></i>
+          <DeleteBtn @delete="deleteNote(note.id)" />
         </div>
       </div>
     </div>

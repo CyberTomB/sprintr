@@ -1,14 +1,15 @@
 <template>
-  <div class="col">
-    <div>
-      <router-link :to="{name: 'Backlog', params: {project_id: project.id}}">
-        <div>
-          <h1>
-            {{ project.name }}
-          </h1>
-        </div>
+  <div class="card p-2 my-2">
+    <div class="row justify-content-between align-items-end">
+      <router-link :to="{name: 'Backlog', params: {project_id: project.id}}" class="col-8">
+        <h1>
+          {{ project.name }}
+        </h1>
       </router-link>
-      <i class="action mdi mdi-delete text-danger" @click="deleteProject(project.id)"></i>
+      <div class="col-4 text-right">
+        <!-- <i class="action mdi mdi-delete text-danger" @click="deleteProject(project.id)"></i> -->
+        <DeleteBtn @delete="deleteProject(project.id)" />
+      </div>
     </div>
   </div>
 </template>
@@ -40,6 +41,6 @@ export default {
 
 <style scoped>
 i{
-  font-size: 10vh;
+  font-size: 5vh;
 }
 </style>

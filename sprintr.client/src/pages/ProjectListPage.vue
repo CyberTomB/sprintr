@@ -1,12 +1,15 @@
 <template>
+  <div class="row">
+    <h1>Current Projects:</h1>
+  </div>
   <div class="row justify-content-around">
-    <div class="col-6" v-if="projects[0]">
+    <div class="col-md-6" v-if="projects[0]">
       <ProjectCard v-for="p in projects" :key="p.id" :project="p" />
     </div>
     <div v-else class="col-6">
       <LoaderComponent />
     </div>
-    <div class="col-5" id="new-project-form">
+    <div class="col-md-5" id="new-project-form">
       <form @submit.prevent="createProject">
         <div class="form-group">
           <label for="project-name">Project Name</label>
@@ -35,6 +38,7 @@ import { computed, onMounted } from '@vue/runtime-core'
 import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import { projectsService } from '../services/ProjectsService'
+import Pop from '../utils/Notifier'
 
 export default {
   setup() {
