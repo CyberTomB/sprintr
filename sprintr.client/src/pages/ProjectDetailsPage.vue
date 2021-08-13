@@ -30,7 +30,7 @@
       </li>
       <li class="nav-item" role="presentation">
         <router-link :to="{name: 'SprintFormPage'}">
-          <i class="mdi mdi-plus nav-link" id="add-tab" data-toggle="tab" role="tab" :class="{active: route.name == 'SprintFormPage'}"></i>
+          <i class="mdi mdi-plus nav-link" id="add-tab" data-toggle="tab" role="tab" :class="{active: route.name == 'SprintFormPage'}">Add Sprint</i>
         </router-link>
       </li>
     </ul>

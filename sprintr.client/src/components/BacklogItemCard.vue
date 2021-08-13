@@ -1,12 +1,14 @@
 <template>
-  <div class="">
-    <div class="">
-      <router-link :to="{name: 'BacklogItemDetailsPage', params: {backlog_id: backlogItem.id}}" class="router-link">
-        <h5>
+  <div class="card p-2 my-2">
+    <div class="row justify-content-between align-items-end">
+      <router-link :to="{name: 'BacklogItemDetailsPage', params: {backlog_id: backlogItem.id}}" class="col-8">
+        <h2>
           {{ backlogItem.name }}
-        </h5>
+        </h2>
       </router-link>
-      <DeleteBtn @delete="deleteProject(backlogItem.id)" />
+      <div class="col-4 text-right">
+        <DeleteBtn @delete="deleteProject(backlogItem.id)" />
+      </div>
     </div>
   </div>
 </template>

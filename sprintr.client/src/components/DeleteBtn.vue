@@ -1,6 +1,6 @@
 <template>
   <!-- NOTE: This button "emits" a "delete" event. When using this component, make sure to write an "@delete" property that handles what this event does -->
-  <i class="action mdi mdi-delete-outline text-danger" @click="$emit('delete')"></i>
+  <i class="action mdi mdi-delete-outline text-danger" @click="$emit('delete')" title="delete"></i>
 </template>
 
 <script>

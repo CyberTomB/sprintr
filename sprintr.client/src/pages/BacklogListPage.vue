@@ -1,9 +1,7 @@
 <template>
   <div id="backlog-list" class="col-7" v-if="backlogItems[0]">
-    <div class="d-flex justify-content-between">
-      <!-- NOTE: This is where the props for the backlogitemcard are being defined (each one is a "b" which is a backlogItem object) -->
-      <BacklogItemCard v-for="b in backlogItems" :key="b.id" :backlog-item="b" />
-    </div>
+    <!-- NOTE: This is where the props for the backlogitemcard are being defined (each one is a "b" which is a backlogItem object) -->
+    <BacklogItemCard v-for="b in backlogItems" :key="b.id" :backlog-item="b" />
   </div>
   <div v-else class="col-7">
     <LoaderComponent />
