@@ -2,9 +2,13 @@
   <div v-if="sprint" class="col-12">
     <div class="row justify-content-between py-3 align-items-center">
       <div class="col-8 d-flex align-items-center">
-        <h1><u>{{ sprint.name }}:</u></h1>
-
-        &nbsp;Tasks: {{ tasksDone.length }} / {{ tasks.length }} || Weight: {{ sprintTaskWeight }}
+        <h1 class="pb-3">
+          {{ sprint.name }}<br />
+          <div class="div">
+            <small v-if="sprintTaskWeight" class="text-light">Weight: <span class="text-danger lighten-30">{{ sprintTaskWeight }}</span> |
+              Completed: <span class="text-primary">{{ tasksDone.length }} / {{ tasks.length }}</span></small>
+          </div>
+        </h1>
       </div>
       <br />
       <div class="col-4 d-flex justify-content-end align-items-center pr-5">
